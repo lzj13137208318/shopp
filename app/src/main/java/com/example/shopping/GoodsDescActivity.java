@@ -18,8 +18,6 @@ public class GoodsDescActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods_desc);
         initView();
-
-
     }
 
     private void initView() {
