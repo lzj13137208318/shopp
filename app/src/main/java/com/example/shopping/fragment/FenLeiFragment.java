@@ -94,6 +94,10 @@ public class FenLeiFragment extends BaseFragment implements FenLeiContract.View,
     //分类的tab数据
     @Override
     public void FenLeiTabDataReturn(FenLeiBean fenLeiBean) {
+        tv_title.setText(fenLeiBean.getData().getCategoryList().get(0).getName()+"分类");
+        Glide.with(context).load(fenLeiBean.getData().getCurrentCategory().getWap_banner_url()).into(img);
+        tv_des.setText(fenLeiBean.getData().getCategoryList().get(0).getFront_name());
+
         final List<FenLeiBean.DataBean.CategoryListBean> categoryList = fenLeiBean.getData().getCategoryList();
         //定义tab集合
         final ArrayList<String> tabs = new ArrayList<>();
