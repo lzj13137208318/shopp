@@ -11,50 +11,34 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.shopping.R;
+import com.example.shopping.base.BaseAdapter;
 import com.example.shopping.model.bean.ShouYeBean;
 
 import java.util.List;
 
-public class Rec_HotAdapter extends RecyclerView.Adapter<Rec_HotAdapter.Vh> {
-    private List<ShouYeBean.DataBean.HotGoodsListBean> list;
-    private Context con;
+public class Rec_HotAdapter extends BaseAdapter {
 
-    public Rec_HotAdapter(List<ShouYeBean.DataBean.HotGoodsListBean> hotGoodsList, Context con) {
-        this.list = hotGoodsList;
-        this.con = con;
-    }
-
-    @NonNull
-    @Override
-    public Vh onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(con, R.layout.item_hot, null);
-        return new Vh(view);
+    public Rec_HotAdapter(List mDatas) {
+        super(mDatas);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Vh holder, int position) {
-        holder.tv_hot_title.setText(list.get(position).getName());
-        holder.tv_hot_desc.setText(list.get(position).getGoods_brief());
-        holder.tv_hot_price.setText("￥ "+list.get(position).getRetail_price());
-        Glide.with(con).load(list.get(position).getList_pic_url()).into(holder.iv_hot_img);
+    protected int getLayoutId() {
+        return R.layout.item_hot;
     }
 
     @Override
-    public int getItemCount() {
-        return list.size();
+    protected void bindData(BaseViewHolder holder, int positon, Object o) {
+        ShouYeBean.DataBean.HotGoodsListBean hotGoodsList  = (ShouYeBean.DataBean.HotGoodsListBean) mDatas.get(positon);
+        ImageView iv_hot_img = (ImageView) holder.getView(R.id.iv_hot_img);
+        TextView tv_hot_title = (TextView) holder.getView(R.id.tv_hot_title);
+        TextView tv_hot_desc = (TextView) holder.getView(R.id.tv_hot_desc);
+        TextView tv_hot_price = (TextView) holder.getView(R.id.tv_hot_price);
+
+        tv_hot_title.setText(hotGoodsList.getName());
+        tv_hot_desc.setText(hotGoodsList.getGoods_brief());
+        tv_hot_price.setText("￥ "+hotGoodsList.getRetail_price());
+        Glide.with(mContext).load(hotGoodsList.getList_pic_url()).into(iv_hot_img);
     }
 
-    public class Vh extends RecyclerView.ViewHolder {
-        ImageView iv_hot_img;
-        TextView tv_hot_title;
-        TextView tv_hot_desc;
-        TextView tv_hot_price;
-        public Vh(@NonNull View itemView) {
-            super(itemView);
-            iv_hot_img = itemView.findViewById(R.id.iv_hot_img);
-            tv_hot_title = itemView.findViewById(R.id.tv_hot_title);
-            tv_hot_desc = itemView.findViewById(R.id.tv_hot_desc);
-            tv_hot_price = itemView.findViewById(R.id.tv_hot_price);
-        }
-    }
 }

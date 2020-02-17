@@ -34,7 +34,7 @@ public class ZhuanTiFragment extends BaseFragment implements HomeContract.View {
         rec = view.findViewById(R.id.rec_zhuanti);
         rec.setLayoutManager(new LinearLayoutManager(context));
         list = new ArrayList<>();
-        adapter = new Rec_zhuantiAdapter(list, context);
+        adapter = new Rec_zhuantiAdapter(list);
         rec.setAdapter(adapter);
     }
 

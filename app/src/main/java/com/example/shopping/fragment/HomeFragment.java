@@ -171,22 +171,22 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 
                 //rec一四首发
                 List<ShouYeBean.DataBean.NewGoodsListBean> newGoodsList = shouYeBean.getData().getNewGoodsList();
-                yisiAdapter = new Rec_shouye_yisiAdapter(newGoodsList, getActivity());
+                yisiAdapter = new Rec_shouye_yisiAdapter(newGoodsList);
                 rec_shouye_yisi.setAdapter(yisiAdapter);
 
                 //rec人气推荐
                 List<ShouYeBean.DataBean.HotGoodsListBean> hotGoodsList = shouYeBean.getData().getHotGoodsList();
-                rec_hotAdapter = new Rec_HotAdapter(hotGoodsList, getActivity());
+                rec_hotAdapter = new Rec_HotAdapter(hotGoodsList);
                 rec_shouye_hot.setAdapter(rec_hotAdapter);
 
                 //rec专题精选
                 List<ShouYeBean.DataBean.TopicListBean> topicList = shouYeBean.getData().getTopicList();
-                rec_topicAdapter = new Rec_topicAdapter(topicList, getActivity());
+                rec_topicAdapter = new Rec_topicAdapter(topicList);
                 rec_shouye_topic.setAdapter(rec_topicAdapter);
 
                 //rec居家
                 List<ShouYeBean.DataBean.CategoryListBean.GoodsListBean> goodsList = shouYeBean.getData().getCategoryList().get(0).getGoodsList();
-                rec_livingHomeAdapter = new Rec_livingHomeAdapter(goodsList, getActivity());
+                rec_livingHomeAdapter = new Rec_livingHomeAdapter(goodsList);
                 rec_shouye_livinghome.setAdapter(rec_livingHomeAdapter);
                 //rec餐厨
             }

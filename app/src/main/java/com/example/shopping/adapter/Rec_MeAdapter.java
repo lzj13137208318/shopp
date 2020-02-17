@@ -11,44 +11,31 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.shopping.R;
+import com.example.shopping.base.BaseAdapter;
 import com.example.shopping.model.bean.MeBean;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Rec_MeAdapter extends RecyclerView.Adapter<Rec_MeAdapter.Vh> {
-    private ArrayList<MeBean> list;
-    private Context con;
+public class Rec_MeAdapter extends BaseAdapter {
 
-    public Rec_MeAdapter(ArrayList<MeBean> list, Context con) {
-        this.list = list;
-        this.con = con;
-    }
-
-    @NonNull
-    @Override
-    public Vh onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(con, R.layout.item_me, null);
-        return new Vh(view);
+    public Rec_MeAdapter(List mDatas) {
+        super(mDatas);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Vh holder, int position) {
-        holder.tv.setText(list.get(position).getText());
-        Glide.with(con).load(list.get(position).getImgpath()).into(holder.img);
+    protected int getLayoutId() {
+        return R.layout.item_me;
     }
 
     @Override
-    public int getItemCount() {
-        return list.size();
+    protected void bindData(BaseViewHolder holder, int positon, Object o) {
+        MeBean list = (MeBean) mDatas.get(positon);
+        ImageView img = (ImageView) holder.getView(R.id.iv_me_item);
+        TextView tv = (TextView) holder.getView(R.id.tv_me_item_text);
+
+        tv.setText(list.getText());
+        Glide.with(mContext).load(list.getImgpath()).into(img);
     }
 
-    public class Vh extends RecyclerView.ViewHolder {
-        ImageView img;
-        TextView tv;
-        public Vh(@NonNull View itemView) {
-            super(itemView);
-           img = itemView.findViewById(R.id.iv_me_item);
-           tv = itemView.findViewById(R.id.tv_me_item_text);
-        }
-    }
 }

@@ -55,7 +55,7 @@ public class MeFragment extends Fragment {
         Mes.add(new MeBean(R.mipmap.f,"帮助中心"));
         Mes.add(new MeBean(R.mipmap.g,"意见反馈"));
 
-        Rec_MeAdapter adapter = new Rec_MeAdapter(Mes, getActivity());
+        Rec_MeAdapter adapter = new Rec_MeAdapter(Mes);
         recMe.setAdapter(adapter);
     }
 

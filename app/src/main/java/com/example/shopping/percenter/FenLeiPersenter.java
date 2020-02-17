@@ -25,7 +25,9 @@ public class FenLeiPersenter extends BasePersenter<FenLeiContract.View> implemen
 
     @Override
     public void getFenLeiListData(int id) {
-        addSubscribe(HttpManager.getFenLeiApi().getFenLeiListBean(id)
+        addSubscribe(HttpManager
+                .getFenLeiApi()
+                .getFenLeiListBean(id)
                 .compose(RxUtils.<FenLei_listBean> rxScheduler())
                 .subscribeWith(new CommonSubscriber<FenLei_listBean>(mView){
                     @Override
