@@ -46,8 +46,11 @@ public abstract class BaseActivity<V extends IBaseView,P extends IPersenter> ext
             unbinder = ButterKnife.bind(this);
             initView();
             persenter = createPersenter();
-            persenter.attchView(this);
-            initData();
+            if (persenter != null){
+                persenter.attchView(this);
+                initData();
+            }
+
         }
     }
 

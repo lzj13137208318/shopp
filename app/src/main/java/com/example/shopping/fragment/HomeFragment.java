@@ -1,11 +1,15 @@
 package com.example.shopping.fragment;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,12 +18,14 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 
+import com.example.shopping.DescActivity;
 import com.example.shopping.R;
 import com.example.shopping.adapter.Rec_HotAdapter;
 import com.example.shopping.adapter.Rec_livingHomeAdapter;
 import com.example.shopping.adapter.Rec_shouye_yisiAdapter;
 import com.example.shopping.adapter.Rec_shouye_zhigongAdapter;
 import com.example.shopping.adapter.Rec_topicAdapter;
+import com.example.shopping.base.BaseAdapter;
 import com.example.shopping.base.BaseFragment;
 import com.example.shopping.interfaces.IPersenter;
 import com.example.shopping.interfaces.home.HomeContract;
@@ -33,7 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class HomeFragment extends BaseFragment implements HomeContract.View {
+public class HomeFragment extends BaseFragment implements HomeContract.View{
     private Banner banner;
     private TabLayout tabShouye;
     private RecyclerView rec_shouye_zhigong;
@@ -98,28 +104,76 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
         brandList = new ArrayList<>();
         adapter = new Rec_shouye_zhigongAdapter(brandList);
         rec_shouye_zhigong.setAdapter(adapter);
+//点击监听
+        adapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Toast.makeText(context, "直供"+position, Toast.LENGTH_SHORT).show();
+                GoToDesc(brandList.get(position).getId());
+            }
+        });
 
         //rec一四首发
         newGoodsList = new ArrayList<>();
         yisiAdapter = new Rec_shouye_yisiAdapter(newGoodsList);
         rec_shouye_yisi.setAdapter(yisiAdapter);
+//点击监听
+        yisiAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Toast.makeText(context, "一四首发"+position, Toast.LENGTH_SHORT).show();
+                GoToDesc(newGoodsList.get(position).getId());
+            }
+        });
 
         //rec人气推荐
         hotGoodsList = new ArrayList<>();
         rec_hotAdapter = new Rec_HotAdapter(hotGoodsList);
         rec_shouye_hot.setAdapter(rec_hotAdapter);
+//点击监听
+        rec_hotAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Toast.makeText(context, "人气推荐"+position, Toast.LENGTH_SHORT).show();
+                GoToDesc(hotGoodsList.get(position).getId());
+            }
+        });
 
         //rec专题精选
         topicList = new ArrayList<>();
         rec_topicAdapter = new Rec_topicAdapter(topicList);
         rec_shouye_topic.setAdapter(rec_topicAdapter);
+//点击监听
+        rec_topicAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Toast.makeText(context, "专题精选"+position, Toast.LENGTH_SHORT).show();
+                GoToDesc(topicList.get(position).getId());
+            }
+        });
 
         //rec居家
         goodsList = new ArrayList<>();
         rec_livingHomeAdapter = new Rec_livingHomeAdapter(goodsList);
         rec_shouye_livinghome.setAdapter(rec_livingHomeAdapter);
+//点击监听
+        rec_livingHomeAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Toast.makeText(context, "居家"+position, Toast.LENGTH_SHORT).show();
+                GoToDesc(goodsList.get(position).getId());
+            }
+        });
+
         //rec餐厨
     }
+
+    private void GoToDesc(int id) {
+        Intent intent = new Intent(activity, DescActivity.class);
+        intent.putExtra("id",id);
+        activity.startActivity(intent);
+    }
+
 
     @Override
     protected void initData() {
@@ -222,4 +276,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     public void showError(String err) {
 
     }
+
+
 }
