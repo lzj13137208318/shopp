@@ -1,5 +1,6 @@
 package com.example.shopping.base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ public abstract class BaseFragment<V extends IBaseView,P extends IPersenter> ext
 
     protected Context context;
     protected P persenter;
+    protected Activity activity;
     Unbinder unbinder;
 
     @Nullable
@@ -33,6 +35,7 @@ public abstract class BaseFragment<V extends IBaseView,P extends IPersenter> ext
         }else{
             view = inflater.inflate(getLayout(),null);
             context = this.getContext();
+            activity = getActivity();
             //unbinder = ButterKnife.bind(this,view);
 
             initView(view);

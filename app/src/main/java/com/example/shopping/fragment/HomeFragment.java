@@ -49,6 +49,13 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     private TextView tvTopic;
     private TextView tvlivinghome;
     private Rec_HotAdapter rec_hotAdapter;
+    private Rec_livingHomeAdapter rec_livingHomeAdapter;
+    private Rec_topicAdapter rec_topicAdapter;
+    private List<ShouYeBean.DataBean.TopicListBean> topicList;
+    private List<ShouYeBean.DataBean.HotGoodsListBean> hotGoodsList;
+    private List<ShouYeBean.DataBean.NewGoodsListBean> newGoodsList;
+    private List<ShouYeBean.DataBean.BrandListBean> brandList;
+    private List<ShouYeBean.DataBean.CategoryListBean.GoodsListBean> goodsList;
 
     @Override
     protected int getLayout() {
@@ -85,6 +92,33 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
         rec_shouye_hot.setLayoutManager(new LinearLayoutManager(getActivity()));
         rec_shouye_hot.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayout.VERTICAL));
         rec_shouye_yisi.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+
+
+        //rec直供的适配器
+        brandList = new ArrayList<>();
+        adapter = new Rec_shouye_zhigongAdapter(brandList);
+        rec_shouye_zhigong.setAdapter(adapter);
+
+        //rec一四首发
+        newGoodsList = new ArrayList<>();
+        yisiAdapter = new Rec_shouye_yisiAdapter(newGoodsList);
+        rec_shouye_yisi.setAdapter(yisiAdapter);
+
+        //rec人气推荐
+        hotGoodsList = new ArrayList<>();
+        rec_hotAdapter = new Rec_HotAdapter(hotGoodsList);
+        rec_shouye_hot.setAdapter(rec_hotAdapter);
+
+        //rec专题精选
+        topicList = new ArrayList<>();
+        rec_topicAdapter = new Rec_topicAdapter(topicList);
+        rec_shouye_topic.setAdapter(rec_topicAdapter);
+
+        //rec居家
+        goodsList = new ArrayList<>();
+        rec_livingHomeAdapter = new Rec_livingHomeAdapter(goodsList);
+        rec_shouye_livinghome.setAdapter(rec_livingHomeAdapter);
+        //rec餐厨
     }
 
     @Override
@@ -99,8 +133,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 
     @Override
     public void HomeDataReturn(final ShouYeBean shouYeBean) {
-
-
 
         List<ShouYeBean.DataBean.BannerBean> banners = shouYeBean.getData().getBanner();
 
@@ -121,8 +153,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 
         getActivity().runOnUiThread(new Runnable() {
 
-            private Rec_livingHomeAdapter rec_livingHomeAdapter;
-            private Rec_topicAdapter rec_topicAdapter;
 
             @Override
             public void run() {
@@ -165,29 +195,19 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
                 }
 
                 //rec直供的适配器
-                List<ShouYeBean.DataBean.BrandListBean> brandList = shouYeBean.getData().getBrandList();
-                adapter = new Rec_shouye_zhigongAdapter(brandList);
-                rec_shouye_zhigong.setAdapter(adapter);
+                adapter.addData(shouYeBean.getData().getBrandList());
 
                 //rec一四首发
-                List<ShouYeBean.DataBean.NewGoodsListBean> newGoodsList = shouYeBean.getData().getNewGoodsList();
-                yisiAdapter = new Rec_shouye_yisiAdapter(newGoodsList);
-                rec_shouye_yisi.setAdapter(yisiAdapter);
+                yisiAdapter.addData(shouYeBean.getData().getNewGoodsList());
 
                 //rec人气推荐
-                List<ShouYeBean.DataBean.HotGoodsListBean> hotGoodsList = shouYeBean.getData().getHotGoodsList();
-                rec_hotAdapter = new Rec_HotAdapter(hotGoodsList);
-                rec_shouye_hot.setAdapter(rec_hotAdapter);
+                rec_hotAdapter.addData(shouYeBean.getData().getHotGoodsList());
 
                 //rec专题精选
-                List<ShouYeBean.DataBean.TopicListBean> topicList = shouYeBean.getData().getTopicList();
-                rec_topicAdapter = new Rec_topicAdapter(topicList);
-                rec_shouye_topic.setAdapter(rec_topicAdapter);
+                rec_topicAdapter.addData(shouYeBean.getData().getTopicList());
 
                 //rec居家
-                List<ShouYeBean.DataBean.CategoryListBean.GoodsListBean> goodsList = shouYeBean.getData().getCategoryList().get(0).getGoodsList();
-                rec_livingHomeAdapter = new Rec_livingHomeAdapter(goodsList);
-                rec_shouye_livinghome.setAdapter(rec_livingHomeAdapter);
+                rec_livingHomeAdapter.addData(shouYeBean.getData().getCategoryList().get(0).getGoodsList());
                 //rec餐厨
             }
         });

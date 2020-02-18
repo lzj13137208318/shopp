@@ -38,7 +38,6 @@ import q.rorbin.verticaltablayout.widget.ITabView;
 import q.rorbin.verticaltablayout.widget.TabView;
 
 public class FenLeiFragment extends BaseFragment implements FenLeiContract.View,BaseAdapter.OnItemClickListener{
-    private EditText etFenlei;
     private VerticalTabLayout tabFenlei;
     private ImageView img;
     private TextView tv_des;
@@ -55,7 +54,6 @@ public class FenLeiFragment extends BaseFragment implements FenLeiContract.View,
 
     @Override
     protected void initView(View view) {
-        etFenlei = (EditText) view.findViewById(R.id.et_fenlei);
         tabFenlei = (VerticalTabLayout) view.findViewById(R.id.tab_fenlei);
         img = (ImageView) view.findViewById(R.id.iv_fenlei_img);
         tv_des = (TextView) view.findViewById(R.id.tv_fenlei_des);
@@ -203,6 +201,6 @@ public class FenLeiFragment extends BaseFragment implements FenLeiContract.View,
         Intent intent = new Intent(context, GoodsDescActivity.class);
         intent.putExtra("posi",position);
         intent.putExtra("data",lists);
-        startActivity(intent);
+        activity.startActivity(intent);
     }
 }

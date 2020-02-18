@@ -1,6 +1,8 @@
 package com.example.shopping.model.bean;
 
-public class CatalogItem {
+import java.io.Serializable;
+
+public class CatalogItem implements Serializable {
 
     public int id;
     public String img;

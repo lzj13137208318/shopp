@@ -31,9 +31,9 @@ public class Rec_livingHomeAdapter extends BaseAdapter {
     protected void bindData(BaseViewHolder holder, int positon, Object o) {
 
         ShouYeBean.DataBean.CategoryListBean.GoodsListBean list = (ShouYeBean.DataBean.CategoryListBean.GoodsListBean) mDatas.get(positon);
-        ImageView img = (ImageView) holder.getView(R.id.tv_item_shouye_yisiprice);
+        ImageView img = (ImageView) holder.getView(R.id.iv_item_shouye_yisi);
         TextView name = (TextView) holder.getView(R.id.tv_item_shouye_yisiname);
-        TextView price = (TextView) holder.getView(R.id.iv_item_shouye_yisi);
+        TextView price = (TextView) holder.getView(R.id.tv_item_shouye_yisiprice);
 
         name.setText(list.getName());
         price.setText("￥"+list.getRetail_price());

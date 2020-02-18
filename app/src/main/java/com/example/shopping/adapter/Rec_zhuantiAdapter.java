@@ -34,11 +34,9 @@ public class Rec_zhuantiAdapter extends BaseAdapter {
         ImageView img = (ImageView) holder.getView(R.id.iv_item_zhuanti_img);
         TextView title = (TextView) holder.getView(R.id.tv_item_zhuanti_title);
         TextView desc = (TextView) holder.getView(R.id.tv_item_zhuanti_desc);
-        TextView price = (TextView) holder.getView(R.id.tv_item_zhuanti_price);
 
-        title.setText(list.getTitle());
+        title.setText(list.getTitle()+"<font color=\"#FF0000\"> &yen;"+list.getPrice_info()+"元起</font>");
         desc.setText(list.getSubtitle());
-        price.setText(list.getPrice_info()+"元起");
         Glide.with(mContext).load(list.getItem_pic_url()).into(img);
     }
 
