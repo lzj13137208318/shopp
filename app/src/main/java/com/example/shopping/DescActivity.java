@@ -9,11 +9,16 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.shopping.adapter.Rec_home_descAdapter;
 import com.example.shopping.base.BaseActivity;
 import com.example.shopping.interfaces.IPersenter;
 import com.example.shopping.interfaces.desc.DescContract;
 import com.example.shopping.model.bean.GoodsDescBean;
+import com.example.shopping.model.bean.GoodsDescListBean;
 import com.example.shopping.percenter.GoodsDescPercenter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DescActivity extends BaseActivity implements DescContract.View {
 
@@ -22,6 +27,8 @@ public class DescActivity extends BaseActivity implements DescContract.View {
     private TextView tvDescTitle;
     private TextView tvDescDesc;
     private RecyclerView recDesc;
+    private List<GoodsDescListBean.DataBeanX.DataBean> list;
+    private Rec_home_descAdapter rec_home_descAdapter;
 
     @Override
     protected int getLayout() {
@@ -42,13 +49,20 @@ public class DescActivity extends BaseActivity implements DescContract.View {
             }
         };
         recDesc.setLayoutManager(gridLayoutManager);
+
+        list = new ArrayList<>();
+        rec_home_descAdapter = new Rec_home_descAdapter(list);
+        recDesc.setAdapter(rec_home_descAdapter);
     }
 
     @Override
     protected void initData() {
         int id = getIntent().getIntExtra("id", -1);
-        if (id != -1)
-        ((GoodsDescPercenter)persenter).getDescData(id);
+        if (id != -1){
+            ((GoodsDescPercenter)persenter).getDescData(id);
+            ((GoodsDescPercenter)persenter).getDescListData(id);
+        }
+
     }
 
     @Override
@@ -62,5 +76,11 @@ public class DescActivity extends BaseActivity implements DescContract.View {
         tvDescTitle.setText(brand.getName());
         tvDescDesc.setText(brand.getSimple_desc());
         Glide.with(context).load(brand.getNew_pic_url()).into(ivDesc);
+    }
+
+    @Override
+    public void DescListDataReturn(GoodsDescListBean goodsDescListBean) {
+        List<GoodsDescListBean.DataBeanX.DataBean> data = goodsDescListBean.getData().getData();
+        rec_home_descAdapter.addData(data);
     }
 }
