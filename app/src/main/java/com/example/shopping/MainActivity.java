@@ -16,7 +16,7 @@ import com.example.shopping.fragment.FenLeiFragment;
 import com.example.shopping.fragment.HomeFragment;
 import com.example.shopping.fragment.MeFragment;
 import com.example.shopping.fragment.ShoppingFragment;
-import com.example.shopping.fragment.ZhuanTiFragment;
+import com.example.shopping.fragment.SpecialFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton mTvWode;
     private TextView mTvToolbar;
     private HomeFragment homeFragment;
-    private ZhuanTiFragment zhuanTiFragment;
+    private SpecialFragment specialFragment;
     private FenLeiFragment fenLeiFragment;
     private ShoppingFragment shoppingFragment;
     private MeFragment meFragment;
@@ -59,21 +59,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void initFragment() {
         homeFragment = new HomeFragment();
-        zhuanTiFragment = new ZhuanTiFragment();
+        specialFragment = new SpecialFragment();
         fenLeiFragment = new FenLeiFragment();
         shoppingFragment = new ShoppingFragment();
         meFragment = new MeFragment();
         old = homeFragment;
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.fl,homeFragment)
-                .add(R.id.fl,zhuanTiFragment)
+                .add(R.id.fl, specialFragment)
                 .add(R.id.fl,fenLeiFragment)
                 .add(R.id.fl,shoppingFragment)
                 .add(R.id.fl,meFragment)
                 .show(old)
                 .hide(fenLeiFragment)
                 .hide(shoppingFragment)
-                .hide(zhuanTiFragment)
+                .hide(specialFragment)
                 .hide(meFragment)
                 .commit();
         mTvShouye.setOnClickListener(new View.OnClickListener() {
@@ -89,11 +89,11 @@ public class MainActivity extends AppCompatActivity {
         mTvZhuanti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowAndHindUtils.showhind(MainActivity.this,zhuanTiFragment,old);
+                ShowAndHindUtils.showhind(MainActivity.this, specialFragment,old);
                 mTool.setBackgroundResource(R.drawable.white);
                 mTvToolbar.setText("仿网易严选");
                 mTvToolbar.setTextColor(Color.BLACK);
-                old = zhuanTiFragment;
+                old = specialFragment;
             }
         });
         mTvFenlei.setOnClickListener(new View.OnClickListener() {
