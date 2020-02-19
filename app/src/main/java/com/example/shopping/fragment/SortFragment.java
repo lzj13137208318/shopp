@@ -2,14 +2,10 @@ package com.example.shopping.fragment;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.shopping.GoodsDescActivity;
 import com.example.shopping.R;
-import com.example.shopping.adapter.Rec_fenleiAdapter;
+import com.example.shopping.adapter.Rec_sortAdapter;
 import com.example.shopping.base.BaseAdapter;
 import com.example.shopping.base.BaseFragment;
 import com.example.shopping.interfaces.IPersenter;
@@ -27,8 +23,6 @@ import com.example.shopping.model.bean.FenLeiBean;
 import com.example.shopping.model.bean.FenLei_listBean;
 import com.example.shopping.percenter.FenLeiPersenter;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +31,7 @@ import q.rorbin.verticaltablayout.adapter.TabAdapter;
 import q.rorbin.verticaltablayout.widget.ITabView;
 import q.rorbin.verticaltablayout.widget.TabView;
 
-public class FenLeiFragment extends BaseFragment implements FenLeiContract.View,BaseAdapter.OnItemClickListener{
+public class SortFragment extends BaseFragment implements FenLeiContract.View,BaseAdapter.OnItemClickListener{
     private VerticalTabLayout tabFenlei;
     private ImageView img;
     private TextView tv_des;
@@ -45,11 +39,11 @@ public class FenLeiFragment extends BaseFragment implements FenLeiContract.View,
     private RecyclerView rec_fenlei;
 
     private ArrayList<CatalogItem> lists;
-    private Rec_fenleiAdapter rec_fenleiAdapter;
+    private Rec_sortAdapter rec_sortAdapter;
 
     @Override
     protected int getLayout() {
-        return R.layout.fragment_fenlei;
+        return R.layout.fragment_sort;
     }
 
     @Override
@@ -72,10 +66,10 @@ public class FenLeiFragment extends BaseFragment implements FenLeiContract.View,
 
         //列表数据
         lists = new ArrayList<>();
-        rec_fenleiAdapter = new Rec_fenleiAdapter(lists);
-        rec_fenlei.setAdapter(rec_fenleiAdapter);
+        rec_sortAdapter = new Rec_sortAdapter(lists);
+        rec_fenlei.setAdapter(rec_sortAdapter);
 
-        rec_fenleiAdapter.setOnItemClickListener(this);
+        rec_sortAdapter.setOnItemClickListener(this);
     }
 
 
@@ -114,7 +108,7 @@ public class FenLeiFragment extends BaseFragment implements FenLeiContract.View,
             catalog.name = item.getName();
             lists.add(catalog);
         }
-        rec_fenleiAdapter.addData(lists);
+        rec_sortAdapter.addData(lists);
 
         //tab的适配器
         tabFenlei.setTabAdapter(new TabAdapter() {
@@ -182,7 +176,7 @@ public class FenLeiFragment extends BaseFragment implements FenLeiContract.View,
             catalog.name = item.getName();
             lists.add(catalog);
         }
-        rec_fenleiAdapter.addData(lists);
+        rec_sortAdapter.addData(lists);
     }
 
     @Override

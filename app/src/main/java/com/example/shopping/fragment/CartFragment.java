@@ -12,11 +12,11 @@ import androidx.fragment.app.Fragment;
 import com.example.shopping.R;
 
 
-public class ShoppingFragment extends Fragment {
+public class CartFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_shopping, null);
+        View view = inflater.inflate(R.layout.fragment_cart, null);
         return view;
     }
 }

@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,11 +16,12 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.shopping.Utils.ShowAndHindUtils;
-import com.example.shopping.fragment.FenLeiFragment;
+import com.example.shopping.fragment.SortFragment;
 import com.example.shopping.fragment.HomeFragment;
 import com.example.shopping.fragment.MeFragment;
-import com.example.shopping.fragment.ShoppingFragment;
+import com.example.shopping.fragment.CartFragment;
 import com.example.shopping.fragment.SpecialFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTvToolbar;
     private HomeFragment homeFragment;
     private SpecialFragment specialFragment;
-    private FenLeiFragment fenLeiFragment;
-    private ShoppingFragment shoppingFragment;
+    private SortFragment sortFragment;
+    private CartFragment cartFragment;
     private MeFragment meFragment;
     private Fragment old;
 
@@ -54,25 +59,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        initFragment();
+
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.navigation_home, R.id.navigation_topic, R.id.navigation_sort, R.id.navigation_cart, R.id.navigation_me)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(navView, navController);
     }
 
-    private void initFragment() {
+   /* private void initFragment() {
         homeFragment = new HomeFragment();
         specialFragment = new SpecialFragment();
-        fenLeiFragment = new FenLeiFragment();
-        shoppingFragment = new ShoppingFragment();
+        sortFragment = new SortFragment();
+        cartFragment = new CartFragment();
         meFragment = new MeFragment();
         old = homeFragment;
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.fl,homeFragment)
                 .add(R.id.fl, specialFragment)
-                .add(R.id.fl,fenLeiFragment)
-                .add(R.id.fl,shoppingFragment)
+                .add(R.id.fl, sortFragment)
+                .add(R.id.fl, cartFragment)
                 .add(R.id.fl,meFragment)
                 .show(old)
-                .hide(fenLeiFragment)
-                .hide(shoppingFragment)
+                .hide(sortFragment)
+                .hide(cartFragment)
                 .hide(specialFragment)
                 .hide(meFragment)
                 .commit();
@@ -99,21 +113,21 @@ public class MainActivity extends AppCompatActivity {
         mTvFenlei.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowAndHindUtils.showhind(MainActivity.this,fenLeiFragment,old);
+                ShowAndHindUtils.showhind(MainActivity.this, sortFragment,old);
                 mTvToolbar.setText("仿网易严选");
                 mTvToolbar.setTextColor(Color.BLACK);
                 mTool.setBackgroundResource(R.drawable.white);
-                old = fenLeiFragment;
+                old = sortFragment;
             }
         });
         mTvGouwuche.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowAndHindUtils.showhind(MainActivity.this,shoppingFragment,old);
+                ShowAndHindUtils.showhind(MainActivity.this, cartFragment,old);
                 mTvToolbar.setText("仿网易严选");
                 mTvToolbar.setTextColor(Color.BLACK);
                 mTool.setBackgroundResource(R.drawable.white);
-                old = shoppingFragment;
+                old = cartFragment;
             }
         });
         mTvWode.setOnClickListener(new View.OnClickListener() {
@@ -126,17 +140,12 @@ public class MainActivity extends AppCompatActivity {
                 old = meFragment;
             }
         });
-    }
+    }*/
 
     private void initView() {
         mTool = (Toolbar) findViewById(R.id.tool);
         setTitle("");
         setSupportActionBar(mTool);
-        mTvShouye = (RadioButton) findViewById(R.id.tv_shouye);
-        mTvZhuanti = (RadioButton) findViewById(R.id.tv_zhuanti);
-        mTvFenlei = (RadioButton) findViewById(R.id.tv_fenlei);
-        mTvGouwuche = (RadioButton) findViewById(R.id.tv_gouwuche);
-        mTvWode = (RadioButton) findViewById(R.id.tv_wode);
-        mTvToolbar = (TextView) findViewById(R.id.tv_toolbar);
+
     }
 }

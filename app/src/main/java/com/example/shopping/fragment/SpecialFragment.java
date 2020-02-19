@@ -26,7 +26,7 @@ public class SpecialFragment extends BaseFragment implements HomeContract.View {
 
     @Override
     protected int getLayout() {
-        return R.layout.fragment_special;
+        return R.layout.fragment_topic;
     }
 
     @Override

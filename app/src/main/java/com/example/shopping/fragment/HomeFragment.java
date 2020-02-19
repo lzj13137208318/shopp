@@ -4,12 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,15 +44,15 @@ import java.util.List;
 
 public class HomeFragment extends BaseFragment implements HomeContract.View{
     private Banner banner;
-    private TabLayout tabShouye;
-    private RecyclerView rec_shouye_zhigong;
+    private TabLayout tabHome;
+    private RecyclerView rec_shouye_direct;
     private Rec_shouye_zhigongAdapter adapter;
     private RecyclerView rec_shouye_yisi;
     private RecyclerView rec_shouye_livinghome;
     private RecyclerView rec_shouye_hot;
     private RecyclerView rec_shouye_topic;
     private Rec_shouye_yisiAdapter yisiAdapter;
-    private TextView tvZhigong;
+    private TextView tvDirect;
     private TextView tvYisi;
     private TextView tvHot;
     private TextView tvTopic;
@@ -71,15 +74,16 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
     @Override
     protected void initView(View view) {
         banner = (Banner) view.findViewById(R.id.banner);
-        tabShouye = (TabLayout) view.findViewById(R.id.tab_shouye);
-
-        rec_shouye_zhigong = (RecyclerView) view.findViewById(R.id.rec_shouye_zhigong);
+        tabHome = (TabLayout) view.findViewById(R.id.tab_home);
+//direct 直供
+        rec_shouye_direct = (RecyclerView) view.findViewById(R.id.rec_shouye_direct);
         rec_shouye_yisi = (RecyclerView) view.findViewById(R.id.rec_shouye_yisi);
         rec_shouye_hot = (RecyclerView) view.findViewById(R.id.rec_shouye_hot);
+//topic 专题
         rec_shouye_topic = (RecyclerView) view.findViewById(R.id.rec_shouye_topic);
         rec_shouye_livinghome = (RecyclerView) view.findViewById(R.id.rec_shouye_livinghome);
 
-        tvZhigong = (TextView) view.findViewById(R.id.tv_zhigong);
+        tvDirect = (TextView) view.findViewById(R.id.tv_direct);
         tvYisi = (TextView) view.findViewById(R.id.tv_yisi);
         tvHot = (TextView) view.findViewById(R.id.tv_hot);
         tvTopic = (TextView) view.findViewById(R.id.tv_topic);
@@ -92,7 +96,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
                 return false;
             }
         };
-        rec_shouye_zhigong.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        rec_shouye_direct.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         rec_shouye_livinghome.setLayoutManager(gridLayoutManager);
         rec_shouye_topic.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
         rec_shouye_hot.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -103,7 +107,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
         //rec直供的适配器
         brandList = new ArrayList<>();
         adapter = new Rec_shouye_zhigongAdapter(brandList);
-        rec_shouye_zhigong.setAdapter(adapter);
+        rec_shouye_direct.setAdapter(adapter);
 //点击监听
         adapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
             @Override
@@ -211,8 +215,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
             @Override
             public void run() {
 
+                tvDirect.setText("品牌制造商直供");
                 tvYisi.setText("周一周四·新品首发");
-                tvZhigong.setText("品牌制造商直供");
                 tvHot.setText("人气推荐");
                 tvTopic.setText("专题精选");
                 tvlivinghome.setText("居家");
@@ -245,7 +249,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
 
                 //tab的显示
                 for (int i = 0; i < tabs.size(); i++) {
-                    tabShouye.addTab(tabShouye.newTab().setText(tabs.get(i)));
+                    tabHome.addTab(tabHome.newTab().setText(tabs.get(i)));
                 }
 
                 //rec直供的适配器

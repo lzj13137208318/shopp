@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Rec_fenleiAdapter extends BaseAdapter {
+public class Rec_sortAdapter extends BaseAdapter {
 
-    public Rec_fenleiAdapter(List mDatas) {
+    public Rec_sortAdapter(List mDatas) {
         super(mDatas);
     }
 

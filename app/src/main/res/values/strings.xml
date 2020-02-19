@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">shopping</string>
+    <string name="shop_home">首页</string>
+    <string name="shop_topic">专题</string>
+    <string name="shop_sort">分类</string>
+    <string name="shop_cart">购物车</string>
+    <string name="shop_me">我的</string>
+
 </resources>
