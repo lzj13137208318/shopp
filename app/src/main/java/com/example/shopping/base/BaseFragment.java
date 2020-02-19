@@ -40,8 +40,11 @@ public abstract class BaseFragment<V extends IBaseView,P extends IPersenter> ext
 
             initView(view);
             persenter = createPersenter();
-            persenter.attchView(this);
-            initData();
+            if (persenter != null){
+                persenter.attchView(this);
+                initData();
+            }
+
         }
         return view;
     }

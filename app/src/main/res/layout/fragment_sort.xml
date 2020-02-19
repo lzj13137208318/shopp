@@ -18,7 +18,7 @@
 
     <q.rorbin.verticaltablayout.VerticalTabLayout
         android:id="@+id/tab_fenlei"
-        android:layout_width="38dp"
+        android:layout_width="42dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
         app:tab_margin="20dp"

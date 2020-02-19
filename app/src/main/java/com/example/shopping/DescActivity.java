@@ -4,13 +4,18 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.view.accessibility.AccessibilityViewCommand;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.shopping.base.BaseActivity;
 import com.example.shopping.interfaces.IPersenter;
+import com.example.shopping.interfaces.desc.DescContract;
+import com.example.shopping.model.bean.GoodsDescBean;
+import com.example.shopping.percenter.GoodsDescPercenter;
 
-public class DescActivity extends BaseActivity {
+public class DescActivity extends BaseActivity implements DescContract.View {
 
 
     private ImageView ivDesc;
@@ -42,10 +47,20 @@ public class DescActivity extends BaseActivity {
     @Override
     protected void initData() {
         int id = getIntent().getIntExtra("id", -1);
+        if (id != -1)
+        ((GoodsDescPercenter)persenter).getDescData(id);
     }
 
     @Override
     protected IPersenter createPersenter() {
-        return null;
+        return new GoodsDescPercenter();
+    }
+
+    @Override
+    public void DescDataReturn(GoodsDescBean goodsDescBean) {
+        GoodsDescBean.DataBean.BrandBean brand = goodsDescBean.getData().getBrand();
+        tvDescTitle.setText(brand.getName());
+        tvDescDesc.setText(brand.getSimple_desc());
+        Glide.with(context).load(brand.getNew_pic_url()).into(ivDesc);
     }
 }

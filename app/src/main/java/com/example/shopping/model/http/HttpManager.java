@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.example.shopping.constants.Constant;
 import com.example.shopping.model.apis.FenLeiApi;
+import com.example.shopping.model.apis.GoodsDescApi;
 import com.example.shopping.model.apis.HomeApi;
 
 import java.io.File;
@@ -32,6 +33,7 @@ public class HttpManager {
     private static Cache cache;
     private static HomeApi homeApi;
     private static FenLeiApi fenLeiApi;
+    private static GoodsDescApi goodsDescApi;
 
     //创建Retrofit对象
     private static Retrofit getRetrofit(String url){
@@ -125,6 +127,17 @@ public class HttpManager {
             }
         }
         return fenLeiApi;
+    }
+
+    public static GoodsDescApi getGoodsDescApi(){
+        synchronized (HttpManager.class){
+            if(goodsDescApi == null){
+                synchronized (HttpManager.class){
+                    goodsDescApi = getServerApis(Constant.Base_Home_url,GoodsDescApi.class);
+                }
+            }
+        }
+        return goodsDescApi;
     }
 
     //拦截器的实现类

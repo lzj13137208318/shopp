@@ -26,33 +26,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar mTool;
-    /**
-     * 首页
-     */
-    private RadioButton mTvShouye;
-    /**
-     * 专题
-     */
-    private RadioButton mTvZhuanti;
-    /**
-     * 分类
-     */
-    private RadioButton mTvFenlei;
-    /**
-     * 购物车
-     */
-    private RadioButton mTvGouwuche;
-    /**
-     * 我的
-     */
-    private RadioButton mTvWode;
-    private TextView mTvToolbar;
-    private HomeFragment homeFragment;
-    private SpecialFragment specialFragment;
-    private SortFragment sortFragment;
-    private CartFragment cartFragment;
-    private MeFragment meFragment;
-    private Fragment old;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

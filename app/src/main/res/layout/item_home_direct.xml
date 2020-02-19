@@ -8,20 +8,20 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/iv_item_shouye"/>
+        android:id="@+id/iv_item_home_direct"/>
     <TextView
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_item_shouye_ck"/>
+        android:id="@+id/tv_item_home_ck"/>
     <TextView
-        app:layout_constraintTop_toBottomOf="@id/tv_item_shouye_ck"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_home_ck"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_item_shouye_price"/>
+        android:id="@+id/tv_item_home_price"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

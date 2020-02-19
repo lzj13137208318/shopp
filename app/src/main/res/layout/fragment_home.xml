@@ -88,13 +88,11 @@
             android:textSize="20dp"
             android:gravity="center"
             />
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <LinearLayout
             android:background="@color/toolbar"
             android:id="@+id/ll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:dividerPadding="10dp"
-            app:showDividers="none"
             android:orientation="horizontal"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_topic">
@@ -102,7 +100,7 @@
                 android:id="@+id/rec_shouye_topic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        </LinearLayout>
 
         <TextView
             android:background="@color/toolbar"

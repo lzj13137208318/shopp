@@ -50,7 +50,6 @@ public abstract class BaseActivity<V extends IBaseView,P extends IPersenter> ext
                 persenter.attchView(this);
                 initData();
             }
-
         }
     }
 
