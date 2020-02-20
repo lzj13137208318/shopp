@@ -6,13 +6,12 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.shopping.adapter.Rec_home_livingHomeAdapter;
+import com.example.shopping.adapter.Rec_sortItemAdapter;
 import com.example.shopping.base.BaseActivity;
-import com.example.shopping.interfaces.IPersenter;
 import com.example.shopping.interfaces.sort.SortContract;
 import com.example.shopping.model.bean.CatalogItem;
-import com.example.shopping.model.bean.ShouYeBean;
 import com.example.shopping.model.bean.SortItemListBean;
+import com.example.shopping.percenter.SortListPercenter;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -25,6 +24,8 @@ public class SortDescActivity extends BaseActivity<SortContract.View, SortContra
     private RecyclerView mRecGoods;
     private TabLayout mTabdesc;
     private ArrayList<CatalogItem> lists;
+    private Rec_sortItemAdapter rec_sortItemAdapter;
+    private int posi;
 
     @Override
     protected int getLayout() {
@@ -38,7 +39,7 @@ public class SortDescActivity extends BaseActivity<SortContract.View, SortContra
         mTabdesc = (TabLayout) findViewById(R.id.tab_desc);
 
         lists = (ArrayList<CatalogItem>) getIntent().getSerializableExtra("data");
-        int posi = getIntent().getIntExtra("posi", -1);
+        posi = getIntent().getIntExtra("posi", -1);
         setTitle("");
 
         mTvtitle.setText(lists.get(posi).name);
@@ -51,22 +52,22 @@ public class SortDescActivity extends BaseActivity<SortContract.View, SortContra
                 return false;
             }
         };
+        ArrayList<SortItemListBean.DataBeanX.GoodsListBean> sortItemListBeans = new ArrayList<>();
         mRecGoods.setLayoutManager(gridLayoutManager);
-        ArrayList<ShouYeBean.DataBean.CategoryListBean.GoodsListBean> goodsListBeans = new ArrayList<>();
-        new Rec_home_livingHomeAdapter(goodsListBeans);
-        //mRecGoods.setAdapter();
+        rec_sortItemAdapter = new Rec_sortItemAdapter(sortItemListBeans);
+        mRecGoods.setAdapter(rec_sortItemAdapter);
 
         //实现tab的动态添加文字
         for (int i = 0; i < lists.size(); i++) {
             mTabdesc.addTab(mTabdesc.newTab().setText(lists.get(i).name));
         }
-        //实现tab跳转到指定位置
+        //实现点击位置跳转到tab指定位置
         mTabdesc.postDelayed(new Runnable() {
             @Override
             public void run() {
                 mTabdesc.getTabAt(posi).select();
             }
-        },0);
+        },500);
 
         //tab的点击监听
         mTabdesc.addOnTabSelectedListener(this);
@@ -75,12 +76,12 @@ public class SortDescActivity extends BaseActivity<SortContract.View, SortContra
 
     @Override
     protected void initData() {
-
+        persenter.getSortListData(lists.get(posi).id,1,100);
     }
 
     @Override
     protected SortContract.Percenter createPersenter() {
-        return null;
+        return new SortListPercenter();
     }
 
     //tab的点击监听
@@ -103,6 +104,6 @@ public class SortDescActivity extends BaseActivity<SortContract.View, SortContra
     @Override
     public void SortListDataReturn(SortItemListBean sortItemListBean) {
         List<SortItemListBean.DataBeanX.GoodsListBean> goodsList = sortItemListBean.getData().getGoodsList();
-
+        rec_sortItemAdapter.upData(goodsList);
     }
 }

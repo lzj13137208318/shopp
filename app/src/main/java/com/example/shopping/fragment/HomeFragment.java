@@ -47,12 +47,14 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
     private RecyclerView rec_shouye_livinghome;
     private RecyclerView rec_shouye_hot;
     private RecyclerView rec_shouye_topic;
+    private RecyclerView rec_shouye_kitchen;
     private Rec_home_yisiAdapter yisiAdapter;
     private TextView tvDirect;
     private TextView tvYisi;
     private TextView tvHot;
     private TextView tvTopic;
     private TextView tvlivinghome;
+    private TextView tvkitchen;
     private Rec_home_HotAdapter rec_home_hotAdapter;
     private Rec_home_livingHomeAdapter rec_home_livingHomeAdapter;
     private Rec_home_topicAdapter rec_home_topicAdapter;
@@ -61,7 +63,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
     private List<ShouYeBean.DataBean.NewGoodsListBean> newGoodsList;
     private List<ShouYeBean.DataBean.BrandListBean> brandList;
     private List<ShouYeBean.DataBean.CategoryListBean.GoodsListBean> goodsList;
-    private ArrayList<CatalogItem> lits;
 
     @Override
     protected int getLayout() {
@@ -73,18 +74,21 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
         banner = (Banner) view.findViewById(R.id.banner);
         tabHome = (TabLayout) view.findViewById(R.id.tab_home);
 //direct 直供
-        rec_shouye_direct = (RecyclerView) view.findViewById(R.id.rec_shouye_direct);
-        rec_shouye_yisi = (RecyclerView) view.findViewById(R.id.rec_shouye_yisi);
-        rec_shouye_hot = (RecyclerView) view.findViewById(R.id.rec_shouye_hot);
+        rec_shouye_direct = (RecyclerView) view.findViewById(R.id.rec_home_direct);
+        rec_shouye_yisi = (RecyclerView) view.findViewById(R.id.rec_home_yisi);
+        rec_shouye_hot = (RecyclerView) view.findViewById(R.id.rec_home_hot);
 //topic 专题
-        rec_shouye_topic = (RecyclerView) view.findViewById(R.id.rec_shouye_topic);
-        rec_shouye_livinghome = (RecyclerView) view.findViewById(R.id.rec_shouye_livinghome);
+        rec_shouye_topic = (RecyclerView) view.findViewById(R.id.rec_home_topic);
+        rec_shouye_livinghome = (RecyclerView) view.findViewById(R.id.rec_home_livinghome);
+//kitchen 餐厨
+        rec_shouye_kitchen = (RecyclerView) view.findViewById(R.id.rec_home_kitchen);
 
         tvDirect = (TextView) view.findViewById(R.id.tv_direct);
         tvYisi = (TextView) view.findViewById(R.id.tv_yisi);
         tvHot = (TextView) view.findViewById(R.id.tv_hot);
         tvTopic = (TextView) view.findViewById(R.id.tv_topic);
         tvlivinghome = (TextView) view.findViewById(R.id.tv_livinghome);
+        tvkitchen = (TextView) view.findViewById(R.id.tv_kitchen);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2){
 
@@ -99,6 +103,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
         rec_shouye_hot.setLayoutManager(new LinearLayoutManager(getActivity()));
         rec_shouye_hot.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayout.VERTICAL));
         rec_shouye_yisi.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        rec_shouye_kitchen.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
 
         //rec直供的适配器
@@ -167,6 +172,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
         });
 
         //rec餐厨
+        rec_shouye_kitchen.setAdapter(rec_home_livingHomeAdapter);
+
     }
 
     private void GoToDesc(int id) {
@@ -260,18 +267,18 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
                 //rec专题精选
                 rec_home_topicAdapter.addData(shouYeBean.getData().getTopicList());
 
-                //rec居家
-                rec_home_livingHomeAdapter.addData(shouYeBean.getData().getCategoryList().get(0).getGoodsList());
-                //rec餐厨
-                List<ShouYeBean.DataBean.CategoryListBean.GoodsListBean> goodsList = shouYeBean.getData().getCategoryList().get(1).getGoodsList();
-                ArrayList<CatalogItem> catalogItems = new ArrayList<>();
-                for (int i = 0; i < goodsList.size(); i++) {
-                    CatalogItem catalogItem = new CatalogItem();
-                    String name = goodsList.get(i).getName();
-                    catalogItem.name = name;
+                if (shouYeBean.getData().getCategoryList().size()>2){
+                    //rec居家
+                    tvlivinghome.setText(shouYeBean.getData().getCategoryList().get(0).getName());
+                    rec_home_livingHomeAdapter.upData(shouYeBean.getData().getCategoryList().get(0).getGoodsList());
+                    //rec餐厨
+                    tvkitchen.setText(shouYeBean.getData().getCategoryList().get(1).getName());
+
                 }
 
-                tvlivinghome.setText(shouYeBean.getData().getCategoryList().get(0).getName());
+
+
+
             }
         });
     }

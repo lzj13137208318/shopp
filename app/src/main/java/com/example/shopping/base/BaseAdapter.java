@@ -68,6 +68,12 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.Ba
         notifyDataSetChanged();
     }
 
+    public void upData(List<T> list){
+        this.mDatas.clear();
+        this.mDatas.addAll(list);
+        notifyDataSetChanged();
+    }
+
     /**
      * 添加数据（局部刷新，重写getItemId方法，同时setHasStableIds(true)）
      * @param datas
