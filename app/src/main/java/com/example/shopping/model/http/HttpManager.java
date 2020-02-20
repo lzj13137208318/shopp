@@ -4,9 +4,10 @@ import android.util.Log;
 
 
 import com.example.shopping.constants.Constant;
-import com.example.shopping.model.apis.FenLeiApi;
+import com.example.shopping.model.apis.SortApi;
 import com.example.shopping.model.apis.GoodsDescApi;
 import com.example.shopping.model.apis.HomeApi;
+import com.example.shopping.model.apis.SortItemListApi;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,8 +33,9 @@ public class HttpManager {
 
     private static Cache cache;
     private static HomeApi homeApi;
-    private static FenLeiApi fenLeiApi;
+    private static SortApi sortApi;
     private static GoodsDescApi goodsDescApi;
+    private static SortItemListApi sortItemListApi;
 
     //创建Retrofit对象
     private static Retrofit getRetrofit(String url){
@@ -118,15 +120,15 @@ public class HttpManager {
     return homeApi;
     }
 
-    public static FenLeiApi getFenLeiApi(){
+    public static SortApi getSortApi(){
         synchronized (HttpManager.class){
-            if(fenLeiApi == null){
+            if(sortApi == null){
                 synchronized (HttpManager.class){
-                    fenLeiApi = getServerApis(Constant.Base_Home_url,FenLeiApi.class);
+                    sortApi = getServerApis(Constant.Base_Home_url, SortApi.class);
                 }
             }
         }
-        return fenLeiApi;
+        return sortApi;
     }
 
     public static GoodsDescApi getGoodsDescApi(){
@@ -138,6 +140,17 @@ public class HttpManager {
             }
         }
         return goodsDescApi;
+    }
+
+    public static SortItemListApi getSortListApi(){
+        synchronized (HttpManager.class){
+            if(sortItemListApi == null){
+                synchronized (HttpManager.class){
+                    sortItemListApi = getServerApis(Constant.Base_Home_url,SortItemListApi.class);
+                }
+            }
+        }
+        return sortItemListApi;
     }
 
     //拦截器的实现类

@@ -17,11 +17,11 @@ import com.example.shopping.adapter.Rec_sortAdapter;
 import com.example.shopping.base.BaseAdapter;
 import com.example.shopping.base.BaseFragment;
 import com.example.shopping.interfaces.IPersenter;
-import com.example.shopping.interfaces.fenlei.FenLeiContract;
+import com.example.shopping.interfaces.fenlei.SortContract;
 import com.example.shopping.model.bean.CatalogItem;
 import com.example.shopping.model.bean.FenLeiBean;
 import com.example.shopping.model.bean.FenLei_listBean;
-import com.example.shopping.percenter.FenLeiPersenter;
+import com.example.shopping.percenter.SortPersenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ import q.rorbin.verticaltablayout.adapter.TabAdapter;
 import q.rorbin.verticaltablayout.widget.ITabView;
 import q.rorbin.verticaltablayout.widget.TabView;
 
-public class SortFragment extends BaseFragment implements FenLeiContract.View,BaseAdapter.OnItemClickListener{
+public class SortFragment extends BaseFragment implements SortContract.View,BaseAdapter.OnItemClickListener{
     private VerticalTabLayout tabFenlei;
     private ImageView img;
     private TextView tv_des;
@@ -75,12 +75,12 @@ public class SortFragment extends BaseFragment implements FenLeiContract.View,Ba
 
     @Override
     protected void initData() {
-        ((FenLeiPersenter)persenter).getFenLeiTabData();
+        ((SortPersenter)persenter).getFenLeiTabData();
     }
 
     @Override
     protected IPersenter createPersenter() {
-        return new FenLeiPersenter();
+        return new SortPersenter();
     }
 
     //分类的tab数据
@@ -106,6 +106,7 @@ public class SortFragment extends BaseFragment implements FenLeiContract.View,Ba
             catalog.id = item.getId();
             catalog.img= item.getWap_banner_url();
             catalog.name = item.getName();
+            catalog.desc = item.getFront_desc();
             lists.add(catalog);
         }
         rec_sortAdapter.addData(lists);
@@ -146,7 +147,7 @@ public class SortFragment extends BaseFragment implements FenLeiContract.View,Ba
             @Override
             public void onTabSelected(TabView tab, int position) {
                 tv_title.setText(categoryList.get(position).getName()+"分类");
-                ((FenLeiPersenter)persenter).getFenLeiListData(categoryList.get(position).getId());
+                ((SortPersenter)persenter).getFenLeiListData(categoryList.get(position).getId());
             }
 
             @Override
@@ -174,6 +175,7 @@ public class SortFragment extends BaseFragment implements FenLeiContract.View,Ba
             catalog.id = item.getId();
             catalog.img= item.getWap_banner_url();
             catalog.name = item.getName();
+            catalog.desc = item.getFront_name();
             lists.add(catalog);
         }
         rec_sortAdapter.addData(lists);

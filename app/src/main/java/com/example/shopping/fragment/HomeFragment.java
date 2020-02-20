@@ -27,6 +27,7 @@ import com.example.shopping.base.BaseAdapter;
 import com.example.shopping.base.BaseFragment;
 import com.example.shopping.interfaces.IPersenter;
 import com.example.shopping.interfaces.home.HomeContract;
+import com.example.shopping.model.bean.CatalogItem;
 import com.example.shopping.model.bean.ShouYeBean;
 import com.example.shopping.percenter.HomePersenter;
 import com.google.android.material.tabs.TabLayout;
@@ -60,6 +61,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
     private List<ShouYeBean.DataBean.NewGoodsListBean> newGoodsList;
     private List<ShouYeBean.DataBean.BrandListBean> brandList;
     private List<ShouYeBean.DataBean.CategoryListBean.GoodsListBean> goodsList;
+    private ArrayList<CatalogItem> lits;
 
     @Override
     protected int getLayout() {
@@ -214,7 +216,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
                 tvYisi.setText("周一周四·新品首发");
                 tvHot.setText("人气推荐");
                 tvTopic.setText("专题精选");
-                tvlivinghome.setText("居家");
 
                 //banner轮播图的实现
                 banner.setImages(imgs).setImageLoader(new ImageLoader() {
@@ -262,6 +263,15 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
                 //rec居家
                 rec_home_livingHomeAdapter.addData(shouYeBean.getData().getCategoryList().get(0).getGoodsList());
                 //rec餐厨
+                List<ShouYeBean.DataBean.CategoryListBean.GoodsListBean> goodsList = shouYeBean.getData().getCategoryList().get(1).getGoodsList();
+                ArrayList<CatalogItem> catalogItems = new ArrayList<>();
+                for (int i = 0; i < goodsList.size(); i++) {
+                    CatalogItem catalogItem = new CatalogItem();
+                    String name = goodsList.get(i).getName();
+                    catalogItem.name = name;
+                }
+
+                tvlivinghome.setText(shouYeBean.getData().getCategoryList().get(0).getName());
             }
         });
     }

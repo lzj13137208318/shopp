@@ -9,7 +9,7 @@ import io.reactivex.Flowable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface FenLeiApi {
+public interface SortApi {
 
     @GET("catalog/index")
     Flowable<FenLeiBean> getFenLeiTabBean();
