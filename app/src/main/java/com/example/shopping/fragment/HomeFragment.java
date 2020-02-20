@@ -247,7 +247,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
                     tabHome.addTab(tabHome.newTab().setText(tabs.get(i)));
                 }
 
-                //rec直供的适配器
+                //rec直供的适配器a
                 adapter.addData(shouYeBean.getData().getBrandList());
 
                 //rec一四首发
