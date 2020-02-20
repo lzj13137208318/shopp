@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.bumptech.glide.Glide;
-import com.example.shopping.GoodsDescActivity;
+import com.example.shopping.SortDescActivity;
 import com.example.shopping.R;
 import com.example.shopping.adapter.Rec_sortAdapter;
 import com.example.shopping.base.BaseAdapter;
@@ -192,7 +192,7 @@ public class SortFragment extends BaseFragment implements FenLeiContract.View,Ba
     //列表条目的点击监听
     @Override
     public void onItemClick(View v, int position) {
-        Intent intent = new Intent(context, GoodsDescActivity.class);
+        Intent intent = new Intent(context, SortDescActivity.class);
         intent.putExtra("posi",position);
         intent.putExtra("data",lists);
         activity.startActivity(intent);

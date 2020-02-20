@@ -16,7 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 
-import com.example.shopping.DescActivity;
+import com.example.shopping.DirectDescActivity;
 import com.example.shopping.R;
 import com.example.shopping.adapter.Rec_home_HotAdapter;
 import com.example.shopping.adapter.Rec_home_livingHomeAdapter;
@@ -121,7 +121,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
             @Override
             public void onItemClick(View v, int position) {
                 Toast.makeText(context, "一四首发"+position, Toast.LENGTH_SHORT).show();
-                GoToDesc(newGoodsList.get(position).getId());
+
             }
         });
 
@@ -134,7 +134,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
             @Override
             public void onItemClick(View v, int position) {
                 Toast.makeText(context, "人气推荐"+position, Toast.LENGTH_SHORT).show();
-                GoToDesc(hotGoodsList.get(position).getId());
+
             }
         });
 
@@ -147,7 +147,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
             @Override
             public void onItemClick(View v, int position) {
                 Toast.makeText(context, "专题精选"+position, Toast.LENGTH_SHORT).show();
-                GoToDesc(topicList.get(position).getId());
+
             }
         });
 
@@ -160,7 +160,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
             @Override
             public void onItemClick(View v, int position) {
                 Toast.makeText(context, "居家"+position, Toast.LENGTH_SHORT).show();
-                GoToDesc(goodsList.get(position).getId());
+
             }
         });
 
@@ -168,7 +168,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
     }
 
     private void GoToDesc(int id) {
-        Intent intent = new Intent(activity, DescActivity.class);
+        Intent intent = new Intent(activity, DirectDescActivity.class);
         intent.putExtra("id",id);
         activity.startActivity(intent);
     }

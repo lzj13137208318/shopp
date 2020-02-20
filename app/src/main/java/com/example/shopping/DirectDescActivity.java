@@ -20,7 +20,7 @@ import com.example.shopping.percenter.GoodsDescPercenter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DescActivity extends BaseActivity implements DescContract.View {
+public class DirectDescActivity extends BaseActivity implements DescContract.View {
 
 
     private ImageView ivDesc;
