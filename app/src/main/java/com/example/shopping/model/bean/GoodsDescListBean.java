@@ -124,7 +124,7 @@ public class GoodsDescListBean {
             private String id;
             private String name;
             private String list_pic_url;
-            private String retail_price;
+            private float retail_price;
 
             public String getId() {
                 return id;
@@ -150,11 +150,11 @@ public class GoodsDescListBean {
                 this.list_pic_url = list_pic_url;
             }
 
-            public String getRetail_price() {
+            public float getRetail_price() {
                 return retail_price;
             }
 
-            public void setRetail_price(String retail_price) {
+            public void setRetail_price(float retail_price) {
                 this.retail_price = retail_price;
             }
         }
@@ -168,7 +168,7 @@ public class GoodsDescListBean {
 
             private String id;
             private String name;
-            private String checked;
+            private boolean checked;
 
             public String getId() {
                 return id;
@@ -186,11 +186,11 @@ public class GoodsDescListBean {
                 this.name = name;
             }
 
-            public String isChecked() {
+            public boolean isChecked() {
                 return checked;
             }
 
-            public void setChecked(String checked) {
+            public void setChecked(boolean checked) {
                 this.checked = checked;
             }
         }
@@ -206,7 +206,7 @@ public class GoodsDescListBean {
             private String id;
             private String name;
             private String list_pic_url;
-            private String retail_price;
+            private float retail_price;
 
             public String getId() {
                 return id;
@@ -232,11 +232,11 @@ public class GoodsDescListBean {
                 this.list_pic_url = list_pic_url;
             }
 
-            public String getRetail_price() {
+            public float getRetail_price() {
                 return retail_price;
             }
 
-            public void setRetail_price(String retail_price) {
+            public void setRetail_price(float retail_price) {
                 this.retail_price = retail_price;
             }
         }

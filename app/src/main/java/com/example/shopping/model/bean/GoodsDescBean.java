@@ -76,7 +76,7 @@ public class GoodsDescBean {
             private String pic_url;
             private int sort_order;
             private int is_show;
-            private int floor_price;
+            private float floor_price;
             private String app_list_pic_url;
             private int is_new;
             private String new_pic_url;
@@ -138,11 +138,11 @@ public class GoodsDescBean {
                 this.is_show = is_show;
             }
 
-            public int getFloor_price() {
+            public float getFloor_price() {
                 return floor_price;
             }
 
-            public void setFloor_price(int floor_price) {
+            public void setFloor_price(float floor_price) {
                 this.floor_price = floor_price;
             }
 

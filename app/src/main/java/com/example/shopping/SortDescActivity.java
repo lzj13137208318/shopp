@@ -89,6 +89,7 @@ public class SortDescActivity extends BaseActivity<SortContract.View, SortContra
     public void onTabSelected(TabLayout.Tab tab) {
         mTvtitle.setText(lists.get(tab.getPosition()).name);
         mTvdesc.setText(lists.get(tab.getPosition()).desc);
+        persenter.getSortListData(lists.get(tab.getPosition()).id,1,100);
     }
 
     @Override

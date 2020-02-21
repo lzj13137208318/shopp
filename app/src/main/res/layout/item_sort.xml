@@ -6,12 +6,12 @@
         android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:id="@+id/iv_item_fenleii_img"/>
+        android:id="@+id/iv_item_sort_img"/>
     <TextView
-        android:layout_below="@+id/iv_item_fenleii_img"
+        android:layout_below="@+id/iv_item_sort_img"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_item_fenlei_title"/>
+        android:id="@+id/tv_item_sort_title"/>
 
 </RelativeLayout>

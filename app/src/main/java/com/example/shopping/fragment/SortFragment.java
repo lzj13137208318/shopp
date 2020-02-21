@@ -49,11 +49,11 @@ public class SortFragment extends BaseFragment implements SortContract.View,Base
     @Override
     protected void initView(View view) {
         tabFenlei = (VerticalTabLayout) view.findViewById(R.id.tab_fenlei);
-        img = (ImageView) view.findViewById(R.id.iv_fenlei_img);
-        tv_des = (TextView) view.findViewById(R.id.tv_fenlei_des);
-        tv_title = (TextView) view.findViewById(R.id.tv_fenlei_title);
+        img = (ImageView) view.findViewById(R.id.iv_sort_img);
+        tv_des = (TextView) view.findViewById(R.id.tv_sort_des);
+        tv_title = (TextView) view.findViewById(R.id.tv_sort_title);
 
-        rec_fenlei = view.findViewById(R.id.rec_fenlei);
+        rec_fenlei = view.findViewById(R.id.rec_sort);
 
         //禁止垂直滑动
         GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 3) {
@@ -109,7 +109,8 @@ public class SortFragment extends BaseFragment implements SortContract.View,Base
             catalog.desc = item.getFront_desc();
             lists.add(catalog);
         }
-        rec_sortAdapter.addData(lists);
+
+        rec_sortAdapter.notifyDataSetChanged();
 
         //tab的适配器
         tabFenlei.setTabAdapter(new TabAdapter() {
@@ -157,8 +158,6 @@ public class SortFragment extends BaseFragment implements SortContract.View,Base
 
         });
 
-
-
     }
 
     //分类列表数据
@@ -178,7 +177,7 @@ public class SortFragment extends BaseFragment implements SortContract.View,Base
             catalog.desc = item.getFront_name();
             lists.add(catalog);
         }
-        rec_sortAdapter.addData(lists);
+        rec_sortAdapter.notifyDataSetChanged();
     }
 
     @Override
