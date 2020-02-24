@@ -16,7 +16,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 
+import com.example.shopping.DirectActivity;
 import com.example.shopping.DirectDescActivity;
+import com.example.shopping.HotActivity;
 import com.example.shopping.R;
 import com.example.shopping.adapter.Rec_home_HotAdapter;
 import com.example.shopping.adapter.Rec_home_livingHomeAdapter;
@@ -105,6 +107,21 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
         rec_shouye_yisi.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         rec_shouye_kitchen.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
+        //品牌制造商直供 点击监听
+        tvDirect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity.startActivity(new Intent(activity, DirectActivity.class));
+            }
+        });
+
+        //人气推荐的点击监听
+        tvHot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity.startActivity(new Intent(activity, HotActivity.class));
+            }
+        });
 
         //rec直供的适配器
         brandList = new ArrayList<>();
@@ -172,7 +189,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
         });
 
         //rec餐厨
-        rec_shouye_kitchen.setAdapter(rec_home_livingHomeAdapter);
+
+       // rec_shouye_kitchen.setAdapter(rec_home_livingHomeAdapter);
 
     }
 
@@ -273,7 +291,15 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
                     rec_home_livingHomeAdapter.upData(shouYeBean.getData().getCategoryList().get(0).getGoodsList());
                     //rec餐厨
                     tvkitchen.setText(shouYeBean.getData().getCategoryList().get(1).getName());
-
+                   /* goodsList.clear();
+                    for (int i = 0; i <shouYeBean.getData().getCategoryList().get(1).getGoodsList().size(); i++) {
+                        ShouYeBean.DataBean.CategoryListBean.GoodsListBean goodsListBean = new ShouYeBean.DataBean.CategoryListBean.GoodsListBean();
+                        goodsListBean.setName(shouYeBean.getData().getCategoryList().get(1).getGoodsList().get(i).getName());
+                        goodsListBean.setList_pic_url(shouYeBean.getData().getCategoryList().get(1).getGoodsList().get(i).getList_pic_url());
+                        goodsListBean.setRetail_price(shouYeBean.getData().getCategoryList().get(1).getGoodsList().get(i).getRetail_price());
+                        goodsList.add(goodsListBean);
+                    }
+                    rec_home_livingHomeAdapter.notifyDataSetChanged();*/
                 }
 
 

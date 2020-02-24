@@ -4,10 +4,7 @@ import android.util.Log;
 
 
 import com.example.shopping.constants.Constant;
-import com.example.shopping.model.apis.SortApi;
-import com.example.shopping.model.apis.GoodsDescApi;
-import com.example.shopping.model.apis.HomeApi;
-import com.example.shopping.model.apis.SortItemListApi;
+import com.example.shopping.model.apis.ShopApi;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,10 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HttpManager {
 
     private static Cache cache;
-    private static HomeApi homeApi;
-    private static SortApi sortApi;
-    private static GoodsDescApi goodsDescApi;
-    private static SortItemListApi sortItemListApi;
+    private static ShopApi shopApi;
 
     //创建Retrofit对象
     private static Retrofit getRetrofit(String url){
@@ -109,49 +103,17 @@ public class HttpManager {
      * 获取api接口
      * @return
      */
-    public static HomeApi getHomeApi(){
+    public static ShopApi getShopApi(){
         synchronized (HttpManager.class){
-            if(homeApi == null){
+            if(shopApi == null){
                 synchronized (HttpManager.class){
-                    homeApi = getServerApis(Constant.Base_Home_url,HomeApi.class);
+                    shopApi = getServerApis(Constant.Base_Home_url,ShopApi.class);
                 }
             }
         }
-    return homeApi;
+    return shopApi;
     }
 
-    public static SortApi getSortApi(){
-        synchronized (HttpManager.class){
-            if(sortApi == null){
-                synchronized (HttpManager.class){
-                    sortApi = getServerApis(Constant.Base_Home_url, SortApi.class);
-                }
-            }
-        }
-        return sortApi;
-    }
-
-    public static GoodsDescApi getGoodsDescApi(){
-        synchronized (HttpManager.class){
-            if(goodsDescApi == null){
-                synchronized (HttpManager.class){
-                    goodsDescApi = getServerApis(Constant.Base_Home_url,GoodsDescApi.class);
-                }
-            }
-        }
-        return goodsDescApi;
-    }
-
-    public static SortItemListApi getSortListApi(){
-        synchronized (HttpManager.class){
-            if(sortItemListApi == null){
-                synchronized (HttpManager.class){
-                    sortItemListApi = getServerApis(Constant.Base_Home_url,SortItemListApi.class);
-                }
-            }
-        }
-        return sortItemListApi;
-    }
 
     //拦截器的实现类
    /*   private static class Myintercepter implements Interceptor {

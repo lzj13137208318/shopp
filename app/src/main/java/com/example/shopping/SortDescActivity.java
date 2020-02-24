@@ -67,7 +67,7 @@ public class SortDescActivity extends BaseActivity<SortContract.View, SortContra
             public void run() {
                 mTabdesc.getTabAt(posi).select();
             }
-        },500);
+        },0);
 
         //tab的点击监听
         mTabdesc.addOnTabSelectedListener(this);

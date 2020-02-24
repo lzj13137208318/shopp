@@ -13,7 +13,7 @@ public class SortPersenter extends BasePersenter<SortContract.View> implements S
 
     @Override
     public void getFenLeiTabData() {
-        addSubscribe(HttpManager.getSortApi().getFenLeiTabBean()
+        addSubscribe(HttpManager.getShopApi().getFenLeiTabBean()
                 .compose(RxUtils.<FenLeiBean> rxScheduler())
                 .subscribeWith(new CommonSubscriber<FenLeiBean>(mView){
                     @Override
@@ -26,7 +26,7 @@ public class SortPersenter extends BasePersenter<SortContract.View> implements S
     @Override
     public void getFenLeiListData(int id) {
         addSubscribe(HttpManager
-                .getSortApi()
+                .getShopApi()
                 .getFenLeiListBean(id)
                 .compose(RxUtils.<FenLei_listBean> rxScheduler())
                 .subscribeWith(new CommonSubscriber<FenLei_listBean>(mView){

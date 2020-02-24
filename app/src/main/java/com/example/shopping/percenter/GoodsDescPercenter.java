@@ -11,7 +11,7 @@ import com.example.shopping.model.http.HttpManager;
 public class GoodsDescPercenter extends BasePersenter<DescContract.View> implements DescContract.Persenter {
     @Override
     public void getDescData(int id) {
-        addSubscribe(HttpManager.getGoodsDescApi().getGoodsDesc(id)
+        addSubscribe(HttpManager.getShopApi().getGoodsDesc(id)
         .compose(RxUtils.<GoodsDescBean>rxScheduler())
         .subscribeWith(new CommonSubscriber<GoodsDescBean>(mView){
 
@@ -24,7 +24,7 @@ public class GoodsDescPercenter extends BasePersenter<DescContract.View> impleme
 
     @Override
     public void getDescListData(int id) {
-        addSubscribe(HttpManager.getGoodsDescApi().getGoodsList(id,1,100)
+        addSubscribe(HttpManager.getShopApi().getGoodsList(id,1,100)
                 .compose(RxUtils.<GoodsDescListBean>rxScheduler())
                 .subscribeWith(new CommonSubscriber<GoodsDescListBean>(mView){
 

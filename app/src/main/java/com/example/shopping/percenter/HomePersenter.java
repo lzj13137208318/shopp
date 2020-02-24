@@ -12,7 +12,7 @@ public class HomePersenter extends BasePersenter<HomeContract.View> implements H
 
     @Override
     public void getHomeData() {
-        addSubscribe(HttpManager.getHomeApi().getShouYeBean()
+        addSubscribe(HttpManager.getShopApi().getShouYeBean()
                 .compose(RxUtils.<ShouYeBean> rxScheduler())
                 .subscribeWith(new CommonSubscriber<ShouYeBean>(mView){
                     @Override
