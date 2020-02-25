@@ -3,13 +3,9 @@ package com.example.shopping.adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.example.shopping.R;
 import com.example.shopping.base.BaseAdapter;
-import com.example.shopping.model.bean.CatalogItem;
 import com.example.shopping.model.bean.SortItemListBean;
 
 import java.util.List;

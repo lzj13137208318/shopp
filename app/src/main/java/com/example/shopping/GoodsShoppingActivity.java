@@ -1,19 +1,14 @@
 package com.example.shopping;
 
-import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shopping.adapter.Rec_home_livingHomeAdapter;
-import com.example.shopping.adapter.Rec_sortAdapter;
 import com.example.shopping.base.BaseActivity;
-import com.example.shopping.interfaces.IPersenter;
 import com.example.shopping.interfaces.shop.GoodsShoppingConstract;
-import com.example.shopping.model.bean.CatalogItem;
 import com.example.shopping.model.bean.DetailBean;
 import com.example.shopping.model.bean.GoodsShoppingBottomListBean;
 import com.example.shopping.model.bean.ShouYeBean;
