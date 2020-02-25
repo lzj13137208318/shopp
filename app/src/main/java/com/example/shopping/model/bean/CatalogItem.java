@@ -8,5 +8,6 @@ public class CatalogItem implements Serializable {
     public String img;
     public String name;
     public String desc;
+    public float price;
 
 }

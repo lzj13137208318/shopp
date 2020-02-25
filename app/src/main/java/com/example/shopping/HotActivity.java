@@ -1,30 +1,35 @@
 package com.example.shopping;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
+import android.content.Intent;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.shopping.Utils.RecyclerViewSpacesItemDecoration;
 import com.example.shopping.adapter.Rec_HotAdapter;
+import com.example.shopping.adapter.Rec_flowlayout;
 import com.example.shopping.base.BaseActivity;
-import com.example.shopping.interfaces.IPersenter;
+import com.example.shopping.base.BaseAdapter;
 import com.example.shopping.interfaces.hot.HotConstract;
-import com.example.shopping.model.bean.CatalogItem;
 import com.example.shopping.model.bean.HotBean;
+import com.example.shopping.model.bean.TextBean;
 import com.example.shopping.percenter.HotPercenter;
+import com.example.shopping.ui.FlowLayout;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.zip.Inflater;
 
-public class HotActivity extends BaseActivity<HotConstract.View, HotConstract.Percenter> implements HotConstract.View,TabLayout.BaseOnTabSelectedListener {
+public class HotActivity extends BaseActivity<HotConstract.View, HotConstract.Percenter> implements HotConstract.View,TabLayout.BaseOnTabSelectedListener,BaseAdapter.OnItemClickListener {
 
     private android.widget.ImageView ivHot;
     private android.widget.TextView tvHotEveryoneIsBuyingCarefullySelectedGoods;
@@ -37,6 +42,7 @@ public class HotActivity extends BaseActivity<HotConstract.View, HotConstract.Pe
     private String SORT = "default";    //default默认 price价格 category类别
     private int categoryId = 0;       //0全部 1居家 2配件 3饮食 4志趣
     private Rec_HotAdapter rec_hotAdapter;
+    private List<HotBean.DataBeanX.GoodsListBean> goodsList;
 
     @Override
     protected int getLayout() {
@@ -62,11 +68,13 @@ public class HotActivity extends BaseActivity<HotConstract.View, HotConstract.Pe
         };
 
         recHot.setLayoutManager(gridLayoutManager);
-        List<HotBean.DataBeanX.GoodsListBean> goodsList = new ArrayList<>();
+        goodsList = new ArrayList<>();
         rec_hotAdapter = new Rec_HotAdapter(goodsList);
         recHot.setAdapter(rec_hotAdapter);
         //tab的点击监听
         tabHot.addOnTabSelectedListener(this);
+        //list中item的点击监听
+        rec_hotAdapter.setOnItemClickListener(this);
     }
 
     @Override
@@ -91,18 +99,42 @@ public class HotActivity extends BaseActivity<HotConstract.View, HotConstract.Pe
     public void onTabSelected(TabLayout.Tab tab) {
         switch (tab.getPosition()){
             case 0:
+                SORT = "default";
                 persenter.getHotData(ishot,page,size,ORDER,SORT,categoryId);
                break;
             case 1:
-                persenter.getHotData(ishot,page,size,"asc",SORT,categoryId);
+                SORT = "price";
+                if ("asc".equals(ORDER)){
+                    persenter.getHotData(ishot,page,size,"asc",SORT,categoryId);
+                    ORDER = "desc";
+                }
+                if ("desc".equals(ORDER)){
+                    persenter.getHotData(ishot,page,size,"asc",SORT,categoryId);
+                    ORDER = "asc";
+                }
                 break;
             case 2:
+                //分类展开
+                /*LinearLayout lin = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.re, null);
+                RecyclerView recyclerView = lin.findViewById(R.id.rec_flowlayout);
 
-                break;
+                ArrayList<TextBean> textBeans = new ArrayList<>();
+                textBeans.add(new TextBean("全部"));
+                textBeans.add(new TextBean("居家"));
+                textBeans.add(new TextBean("配件"));
+                textBeans.add(new TextBean("饮食"));
+                textBeans.add(new TextBean("志趣"));
+
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                Rec_flowlayout rec_flowlayout = new Rec_flowlayout(textBeans);
+                recyclerView.setAdapter(rec_flowlayout);
+
+                PopupWindow popupWindow = new PopupWindow(recyclerView, LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+                popupWindow.setContentView(recyclerView);
+                popupWindow.showAsDropDown(tabHot,0,0);*/
 
         }
     }
-
     @Override
     public void onTabUnselected(TabLayout.Tab tab) {
 
@@ -111,13 +143,23 @@ public class HotActivity extends BaseActivity<HotConstract.View, HotConstract.Pe
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
         if (tab.getPosition()==1){
+            SORT = "price";
             if ("asc".equals(ORDER)){
-                persenter.getHotData(ishot,page,size,"desc",SORT,categoryId);
+                ORDER = "desc";
+                persenter.getHotData(ishot,page,size,ORDER,SORT,categoryId);
             }else {
-                persenter.getHotData(ishot,page,size,"asc",SORT,categoryId);
+                ORDER = "asc";
+                persenter.getHotData(ishot,page,size,ORDER,SORT,categoryId);
             }
         }
 
+    }
 
+    //item的点击监听
+    @Override
+    public void onItemClick(View v, int position) {
+        Intent intent = new Intent(this, GoodsShoppingActivity.class);
+        intent.putExtra("id",goodsList.get(position).getId());
+        startActivity(intent);
     }
 }

@@ -6,61 +6,69 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     tools:context=".HotActivity">
+
     <ScrollView
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <ImageView
-                android:backgroundTint="@color/toolbar"
                 android:id="@+id/iv_hot"
-                app:layout_constraintTop_toTopOf="parent"
-                android:background="@color/bg"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"/>
+                android:layout_height="120dp"
+                android:background="@color/bg"
+                android:backgroundTint="@color/toolbar"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
-                android:textColor="@color/toolbar"
                 android:id="@+id/tv_hot_Everyone_is_buying_carefully_selected_goods"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="@id/iv_hot"
+                android:text="大家都在买的严选好物"
+                android:textColor="@color/toolbar"
                 app:layout_constraintBottom_toBottomOf="@id/iv_hot"
                 app:layout_constraintLeft_toLeftOf="@id/iv_hot"
                 app:layout_constraintRight_toRightOf="@id/iv_hot"
-                android:text="大家都在买的严选好物"/>
+                app:layout_constraintTop_toTopOf="@id/iv_hot" />
+
             <View
-                android:backgroundTint="@color/toolbar"
                 android:layout_width="0dp"
                 android:layout_height="0.5dp"
-                app:layout_constraintTop_toBottomOf="@id/tv_hot_Everyone_is_buying_carefully_selected_goods"
-                app:layout_constraintLeft_toLeftOf="@id/tv_hot_Everyone_is_buying_carefully_selected_goods"
-                app:layout_constraintRight_toRightOf="@id/tv_hot_Everyone_is_buying_carefully_selected_goods"
+                android:background="@color/toolbar"
+                android:backgroundTint="@color/toolbar"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:background="@color/toolbar"/>
+                app:layout_constraintLeft_toLeftOf="@id/tv_hot_Everyone_is_buying_carefully_selected_goods"
+                app:layout_constraintRight_toRightOf="@id/tv_hot_Everyone_is_buying_carefully_selected_goods"
+                app:layout_constraintTop_toBottomOf="@id/tv_hot_Everyone_is_buying_carefully_selected_goods" />
+
             <LinearLayout
-                android:background="@color/toolbar"
                 android:id="@+id/linearlayout_hot"
-                app:layout_constraintTop_toBottomOf="@id/iv_hot"
                 android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/toolbar"
                 android:orientation="horizontal"
-                android:layout_height="50dp">
+                app:layout_constraintTop_toBottomOf="@id/iv_hot">
+
                 <com.google.android.material.tabs.TabLayout
-                    app:tabIndicatorHeight="0dp"
-                    app:tabSelectedTextColor="#C70101"
                     android:id="@+id/tab_hot"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabSelectedTextColor="#C70101" />
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
-                android:background="@color/toolbar"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@id/linearlayout_hot"
+                android:id="@+id/rec_hot"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/rec_hot"/>
+                android:layout_marginTop="10dp"
+                android:background="@color/toolbar"
+                app:layout_constraintTop_toBottomOf="@id/linearlayout_hot" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

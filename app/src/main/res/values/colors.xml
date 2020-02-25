@@ -5,4 +5,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="toolbar">#FFFFFF</color>
     <color name="bg">#ECECEC</color>
+    <color name="text">#C7C7C7</color>
+    <color name="black">#000000</color>
 </resources>
