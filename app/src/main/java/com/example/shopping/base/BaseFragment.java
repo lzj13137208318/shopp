@@ -16,6 +16,7 @@ import com.example.shopping.Utils.SystemUtils;
 import com.example.shopping.interfaces.IBaseView;
 import com.example.shopping.interfaces.IPersenter;
 
+import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public abstract class BaseFragment<V extends IBaseView,P extends IPersenter> extends Fragment implements IBaseView {
@@ -36,7 +37,7 @@ public abstract class BaseFragment<V extends IBaseView,P extends IPersenter> ext
             view = inflater.inflate(getLayout(),null);
             context = this.getContext();
             activity = getActivity();
-            //unbinder = ButterKnife.bind(this,view);
+            unbinder = ButterKnife.bind(this,view);
 
             initView(view);
             persenter = createPersenter();

@@ -15,21 +15,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
-
 import com.example.shopping.DirectActivity;
 import com.example.shopping.DirectDescActivity;
 import com.example.shopping.HotActivity;
 import com.example.shopping.R;
 import com.example.shopping.adapter.Rec_home_HotAdapter;
-import com.example.shopping.adapter.Rec_home_livingHomeAdapter;
-import com.example.shopping.adapter.Rec_home_yisiAdapter;
 import com.example.shopping.adapter.Rec_home_directAdapter;
+import com.example.shopping.adapter.Rec_home_livingHomeAdapter;
 import com.example.shopping.adapter.Rec_home_topicAdapter;
+import com.example.shopping.adapter.Rec_home_yisiAdapter;
 import com.example.shopping.base.BaseAdapter;
 import com.example.shopping.base.BaseFragment;
 import com.example.shopping.interfaces.IPersenter;
 import com.example.shopping.interfaces.home.HomeContract;
-import com.example.shopping.model.bean.CatalogItem;
 import com.example.shopping.model.bean.ShouYeBean;
 import com.example.shopping.percenter.HomePersenter;
 import com.google.android.material.tabs.TabLayout;
@@ -39,32 +37,67 @@ import com.youth.banner.loader.ImageLoader;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.OnClick;
 
-public class HomeFragment extends BaseFragment implements HomeContract.View{
-    private Banner banner;
-    private TabLayout tabHome;
-    private RecyclerView rec_shouye_direct;
-    private Rec_home_directAdapter adapter;
-    private RecyclerView rec_shouye_yisi;
-    private RecyclerView rec_shouye_livinghome;
-    private RecyclerView rec_shouye_hot;
-    private RecyclerView rec_shouye_topic;
-    private RecyclerView rec_shouye_kitchen;
-    private Rec_home_yisiAdapter yisiAdapter;
-    private TextView tvDirect;
-    private TextView tvYisi;
-    private TextView tvHot;
-    private TextView tvTopic;
-    private TextView tvlivinghome;
-    private TextView tvkitchen;
-    private Rec_home_HotAdapter rec_home_hotAdapter;
-    private Rec_home_livingHomeAdapter rec_home_livingHomeAdapter;
-    private Rec_home_topicAdapter rec_home_topicAdapter;
+
+public class HomeFragment extends BaseFragment implements HomeContract.View {
     private List<ShouYeBean.DataBean.TopicListBean> topicList;
     private List<ShouYeBean.DataBean.HotGoodsListBean> hotGoodsList;
     private List<ShouYeBean.DataBean.NewGoodsListBean> newGoodsList;
     private List<ShouYeBean.DataBean.BrandListBean> brandList;
     private List<ShouYeBean.DataBean.CategoryListBean.GoodsListBean> goodsList;
+    private Rec_home_directAdapter rec_home_directAdapter;
+
+    @BindView(R.id.tv_yisi)
+    TextView tvYisi;
+
+    @BindView(R.id.tv_hot)
+    TextView tvHot;
+
+    @BindView(R.id.tv_direct)
+    TextView tvDirect;
+
+    @BindView(R.id.tv_topic)
+    TextView tvTopic;
+
+    @BindView(R.id.tv_livinghome)
+    TextView tvlivinghome;
+
+    @BindView(R.id.tv_kitchen)
+    TextView tvkitchen;
+
+    @BindView(R.id.tab_home)
+    TabLayout tabHome;
+
+    @BindView(R.id.rec_home_livinghome)
+    RecyclerView rec_shouye_livinghome;
+
+    //topic 专题
+    @BindView(R.id.rec_home_topic)
+    RecyclerView rec_shouye_topic;
+
+    //direct 直供
+    @BindView(R.id.rec_home_direct)
+    RecyclerView rec_shouye_direct;
+
+    @BindView(R.id.rec_home_yisi)
+    RecyclerView rec_shouye_yisi;
+
+    @BindView(R.id.rec_home_hot)
+    RecyclerView rec_shouye_hot;
+
+    //kitchen 餐厨
+    @BindView(R.id.rec_home_kitchen)
+    RecyclerView rec_shouye_kitchen;
+
+    @BindView(R.id.banner)
+    Banner banner;
+    private Rec_home_yisiAdapter rec_home_yisiAdapter;
+    private Rec_home_HotAdapter rec_home_hotAdapter;
+    private Rec_home_topicAdapter rec_home_topicAdapter;
+    private Rec_home_livingHomeAdapter rec_home_livingHomeAdapter;
+
 
     @Override
     protected int getLayout() {
@@ -73,27 +106,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
 
     @Override
     protected void initView(View view) {
-        banner = (Banner) view.findViewById(R.id.banner);
-        tabHome = (TabLayout) view.findViewById(R.id.tab_home);
-//direct 直供
-        rec_shouye_direct = (RecyclerView) view.findViewById(R.id.rec_home_direct);
-        rec_shouye_yisi = (RecyclerView) view.findViewById(R.id.rec_home_yisi);
-        rec_shouye_hot = (RecyclerView) view.findViewById(R.id.rec_home_hot);
-//topic 专题
-        rec_shouye_topic = (RecyclerView) view.findViewById(R.id.rec_home_topic);
-        rec_shouye_livinghome = (RecyclerView) view.findViewById(R.id.rec_home_livinghome);
-//kitchen 餐厨
-        rec_shouye_kitchen = (RecyclerView) view.findViewById(R.id.rec_home_kitchen);
-
-        tvDirect = (TextView) view.findViewById(R.id.tv_direct);
-        tvYisi = (TextView) view.findViewById(R.id.tv_yisi);
-        tvHot = (TextView) view.findViewById(R.id.tv_hot);
-        tvTopic = (TextView) view.findViewById(R.id.tv_topic);
-        tvlivinghome = (TextView) view.findViewById(R.id.tv_livinghome);
-        tvkitchen = (TextView) view.findViewById(R.id.tv_kitchen);
-
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2){
-
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2) {
             @Override
             public boolean canScrollVertically() {
                 return false;
@@ -101,50 +114,35 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
         };
         rec_shouye_direct.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         rec_shouye_livinghome.setLayoutManager(gridLayoutManager);
-        rec_shouye_topic.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+        rec_shouye_topic.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rec_shouye_hot.setLayoutManager(new LinearLayoutManager(getActivity()));
         rec_shouye_hot.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayout.VERTICAL));
         rec_shouye_yisi.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         rec_shouye_kitchen.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
-        //品牌制造商直供 点击监听
-        tvDirect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                activity.startActivity(new Intent(activity, DirectActivity.class));
-            }
-        });
-
-        //人气推荐的点击监听
-        tvHot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                activity.startActivity(new Intent(activity, HotActivity.class));
-            }
-        });
 
         //rec直供的适配器
         brandList = new ArrayList<>();
-        adapter = new Rec_home_directAdapter(brandList);
-        rec_shouye_direct.setAdapter(adapter);
+        rec_home_directAdapter = new Rec_home_directAdapter(brandList);
+        rec_shouye_direct.setAdapter(rec_home_directAdapter);
 //点击监听
-        adapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+        rec_home_directAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Toast.makeText(context, "直供"+brandList.get(position).getId(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "直供" + brandList.get(position).getId(), Toast.LENGTH_SHORT).show();
                 GoToDesc(brandList.get(position).getId());
             }
         });
 
         //rec一四首发
         newGoodsList = new ArrayList<>();
-        yisiAdapter = new Rec_home_yisiAdapter(newGoodsList);
-        rec_shouye_yisi.setAdapter(yisiAdapter);
+        rec_home_yisiAdapter = new Rec_home_yisiAdapter(newGoodsList);
+        rec_shouye_yisi.setAdapter(rec_home_yisiAdapter);
 //点击监听
-        yisiAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+        rec_home_yisiAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Toast.makeText(context, "一四首发"+position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "一四首发" + position, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -157,7 +155,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
         rec_home_hotAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Toast.makeText(context, "人气推荐"+position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "人气推荐" + position, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -170,7 +168,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
         rec_home_topicAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Toast.makeText(context, "专题精选"+position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "专题精选" + position, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -183,27 +181,45 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
         rec_home_livingHomeAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Toast.makeText(context, "居家"+position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "居家" + position, Toast.LENGTH_SHORT).show();
 
             }
         });
 
         //rec餐厨
 
-       // rec_shouye_kitchen.setAdapter(rec_home_livingHomeAdapter);
+        // rec_shouye_kitchen.setAdapter(rec_home_livingHomeAdapter);
 
+    }
+
+    //品牌制造商直供 点击监听
+    @OnClick(R.id.tv_direct)
+    public void OnDirect(){
+        activity.startActivity(new Intent(activity, DirectActivity.class));
+    }
+
+    //新品首发的点击监听
+    @OnClick(R.id.tv_yisi)
+    public void Onyisi(){
+        activity.startActivity(new Intent(activity, HotActivity.class).putExtra("id",1));
+    }
+
+    //人气推荐的点击监听
+    @OnClick(R.id.tv_hot)
+    public void OnHot(){
+        activity.startActivity(new Intent(activity, HotActivity.class));
     }
 
     private void GoToDesc(int id) {
         Intent intent = new Intent(activity, DirectDescActivity.class);
-        intent.putExtra("id",id);
+        intent.putExtra("id", id);
         activity.startActivity(intent);
     }
 
 
     @Override
     protected void initData() {
-        ((HomePersenter)persenter).getHomeData();
+        ((HomePersenter) persenter).getHomeData();
     }
 
     @Override
@@ -274,10 +290,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
                 }
 
                 //rec直供的适配器
-                adapter.addData(shouYeBean.getData().getBrandList());
+                rec_home_directAdapter.addData(shouYeBean.getData().getBrandList());
 
                 //rec一四首发
-                yisiAdapter.addData(shouYeBean.getData().getNewGoodsList());
+                rec_home_yisiAdapter.addData(shouYeBean.getData().getNewGoodsList());
 
                 //rec人气推荐
                 rec_home_hotAdapter.addData(shouYeBean.getData().getHotGoodsList());
@@ -285,7 +301,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
                 //rec专题精选
                 rec_home_topicAdapter.addData(shouYeBean.getData().getTopicList());
 
-                if (shouYeBean.getData().getCategoryList().size()>2){
+                if (shouYeBean.getData().getCategoryList().size() > 2) {
                     //rec居家
                     tvlivinghome.setText(shouYeBean.getData().getCategoryList().get(0).getName());
                     rec_home_livingHomeAdapter.upData(shouYeBean.getData().getCategoryList().get(0).getGoodsList());
@@ -301,8 +317,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View{
                     }
                     rec_home_livingHomeAdapter.notifyDataSetChanged();*/
                 }
-
-
 
 
             }

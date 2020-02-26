@@ -19,6 +19,7 @@
             <ImageView
                 android:id="@+id/iv_hot"
                 android:layout_width="match_parent"
+                android:scaleType="matrix"
                 android:layout_height="120dp"
                 android:background="@color/bg"
                 android:backgroundTint="@color/toolbar"

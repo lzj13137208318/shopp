@@ -14,12 +14,15 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.shopping.adapter.Rec_HotAdapter;
 import com.example.shopping.adapter.Rec_flowlayout;
 import com.example.shopping.base.BaseActivity;
 import com.example.shopping.base.BaseAdapter;
 import com.example.shopping.interfaces.hot.HotConstract;
+import com.example.shopping.model.bean.BannerInfo_Bean;
 import com.example.shopping.model.bean.HotBean;
+import com.example.shopping.model.bean.NewPageListBean;
 import com.example.shopping.model.bean.TextBean;
 import com.example.shopping.percenter.HotPercenter;
 import com.example.shopping.ui.FlowLayout;
@@ -43,6 +46,7 @@ public class HotActivity extends BaseActivity<HotConstract.View, HotConstract.Pe
     private int categoryId = 0;       //0全部 1居家 2配件 3饮食 4志趣
     private Rec_HotAdapter rec_hotAdapter;
     private List<HotBean.DataBeanX.GoodsListBean> goodsList;
+    private int id;
 
     @Override
     protected int getLayout() {
@@ -79,7 +83,14 @@ public class HotActivity extends BaseActivity<HotConstract.View, HotConstract.Pe
 
     @Override
     protected void initData() {
-        persenter.getHotData(ishot,page,size,ORDER,SORT,categoryId);
+        persenter.getBannerInfo_Bean();
+        id = getIntent().getIntExtra("id", 0);
+        if ( id == 1){
+            persenter.getNewPageListBean(ishot,page,size,ORDER,SORT,categoryId);
+        }else {
+            persenter.getHotData(ishot,page,size,ORDER,SORT,categoryId);
+        }
+
     }
 
     @Override
@@ -94,27 +105,48 @@ public class HotActivity extends BaseActivity<HotConstract.View, HotConstract.Pe
         rec_hotAdapter.upData(goodsList);
     }
 
+    @Override
+    public void BannerInfo_BeanReturn(BannerInfo_Bean bannerInfo_bean) {
+        tvHotEveryoneIsBuyingCarefullySelectedGoods.setText(bannerInfo_bean.getData().getBannerInfo().getName());
+        Glide.with(context).load(bannerInfo_bean.getData().getBannerInfo().getImg_url()).into(ivHot);
+    }
+
+    @Override
+    public void NewPageListBeanReturn(NewPageListBean newPageListBean) {
+        List<NewPageListBean.DataBeanX.GoodsListBean> goodsLists = newPageListBean.getData().getGoodsList();
+        goodsList.clear();
+        for (int i = 0; i < goodsLists.size(); i++) {
+            HotBean.DataBeanX.GoodsListBean goodsListBean = new HotBean.DataBeanX.GoodsListBean();
+            goodsListBean.setName(goodsLists.get(i).getName());
+            goodsListBean.setList_pic_url(goodsLists.get(i).getList_pic_url());
+            goodsListBean.setRetail_price(goodsLists.get(i).getRetail_price());
+            goodsList.add(goodsListBean);
+        }
+        rec_hotAdapter.notifyDataSetChanged();
+    }
+
     //tab的点击监听
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
-        switch (tab.getPosition()){
-            case 0:
-                SORT = "default";
-                persenter.getHotData(ishot,page,size,ORDER,SORT,categoryId);
-               break;
-            case 1:
-                SORT = "price";
-                if ("asc".equals(ORDER)){
-                    persenter.getHotData(ishot,page,size,"asc",SORT,categoryId);
-                    ORDER = "desc";
-                }
-                if ("desc".equals(ORDER)){
-                    persenter.getHotData(ishot,page,size,"asc",SORT,categoryId);
-                    ORDER = "asc";
-                }
-                break;
-            case 2:
-                //分类展开
+        if (id == 0){
+            switch (tab.getPosition()){
+                case 0:
+                    SORT = "default";
+                    persenter.getHotData(ishot,page,size,ORDER,SORT,categoryId);
+                    break;
+                case 1:
+                    SORT = "price";
+                    if ("asc".equals(ORDER)){
+                        persenter.getHotData(ishot,page,size,"asc",SORT,categoryId);
+                        ORDER = "desc";
+                    }
+                    if ("desc".equals(ORDER)){
+                        persenter.getHotData(ishot,page,size,"asc",SORT,categoryId);
+                        ORDER = "asc";
+                    }
+                    break;
+                case 2:
+                    //分类展开
                 /*LinearLayout lin = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.re, null);
                 RecyclerView recyclerView = lin.findViewById(R.id.rec_flowlayout);
 
@@ -133,7 +165,47 @@ public class HotActivity extends BaseActivity<HotConstract.View, HotConstract.Pe
                 popupWindow.setContentView(recyclerView);
                 popupWindow.showAsDropDown(tabHot,0,0);*/
 
+            }
+        }else {
+            switch (tab.getPosition()){
+                case 0:
+                    SORT = "default";
+                    persenter.getNewPageListBean(ishot,page,size,ORDER,SORT,categoryId);
+                    break;
+                case 1:
+                    SORT = "price";
+                    if ("asc".equals(ORDER)){
+                        persenter.getNewPageListBean(ishot,page,size,"asc",SORT,categoryId);
+                        ORDER = "desc";
+                    }
+                    if ("desc".equals(ORDER)){
+                        persenter.getNewPageListBean(ishot,page,size,"asc",SORT,categoryId);
+                        ORDER = "asc";
+                    }
+                    break;
+                case 2:
+                    //分类展开
+                /*LinearLayout lin = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.re, null);
+                RecyclerView recyclerView = lin.findViewById(R.id.rec_flowlayout);
+
+                ArrayList<TextBean> textBeans = new ArrayList<>();
+                textBeans.add(new TextBean("全部"));
+                textBeans.add(new TextBean("居家"));
+                textBeans.add(new TextBean("配件"));
+                textBeans.add(new TextBean("饮食"));
+                textBeans.add(new TextBean("志趣"));
+
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                Rec_flowlayout rec_flowlayout = new Rec_flowlayout(textBeans);
+                recyclerView.setAdapter(rec_flowlayout);
+
+                PopupWindow popupWindow = new PopupWindow(recyclerView, LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+                popupWindow.setContentView(recyclerView);
+                popupWindow.showAsDropDown(tabHot,0,0);*/
+
+            }
         }
+
     }
     @Override
     public void onTabUnselected(TabLayout.Tab tab) {
@@ -142,16 +214,30 @@ public class HotActivity extends BaseActivity<HotConstract.View, HotConstract.Pe
 
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
-        if (tab.getPosition()==1){
-            SORT = "price";
-            if ("asc".equals(ORDER)){
-                ORDER = "desc";
-                persenter.getHotData(ishot,page,size,ORDER,SORT,categoryId);
-            }else {
-                ORDER = "asc";
-                persenter.getHotData(ishot,page,size,ORDER,SORT,categoryId);
+        if (id == 0){
+            if (tab.getPosition()==1){
+                SORT = "price";
+                if ("asc".equals(ORDER)){
+                    ORDER = "desc";
+                    persenter.getHotData(ishot,page,size,ORDER,SORT,categoryId);
+                }else {
+                    ORDER = "asc";
+                    persenter.getHotData(ishot,page,size,ORDER,SORT,categoryId);
+                }
+            }
+        }else {
+            if (tab.getPosition()==1){
+                SORT = "price";
+                if ("asc".equals(ORDER)){
+                    ORDER = "desc";
+                    persenter.getNewPageListBean(ishot,page,size,ORDER,SORT,categoryId);
+                }else {
+                    ORDER = "asc";
+                    persenter.getNewPageListBean(ishot,page,size,ORDER,SORT,categoryId);
+                }
             }
         }
+
 
     }
 

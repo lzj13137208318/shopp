@@ -205,7 +205,7 @@ public class HotBean {
             private int id;
             private String name;
             private String list_pic_url;
-            private int retail_price;
+            private float retail_price;
 
             public int getId() {
                 return id;
@@ -231,11 +231,11 @@ public class HotBean {
                 this.list_pic_url = list_pic_url;
             }
 
-            public int getRetail_price() {
+            public float getRetail_price() {
                 return retail_price;
             }
 
-            public void setRetail_price(int retail_price) {
+            public void setRetail_price(float retail_price) {
                 this.retail_price = retail_price;
             }
         }
