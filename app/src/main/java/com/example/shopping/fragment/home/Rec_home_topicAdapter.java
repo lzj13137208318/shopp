@@ -1,4 +1,4 @@
-package com.example.shopping.adapter;
+package com.example.shopping.fragment.home;
 
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,28 +10,32 @@ import com.example.shopping.model.bean.ShouYeBean;
 
 import java.util.List;
 
-public class Rec_specialAdapter extends BaseAdapter {
+public class Rec_home_topicAdapter extends BaseAdapter {
 
 
-    public Rec_specialAdapter(List mDatas) {
+    public Rec_home_topicAdapter(List mDatas) {
         super(mDatas);
     }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.item_special;
+        return R.layout.item_home_topic;
     }
 
     @Override
     protected void bindData(BaseViewHolder holder, int positon, Object o) {
         ShouYeBean.DataBean.TopicListBean list = (ShouYeBean.DataBean.TopicListBean) mDatas.get(positon);
-        ImageView img = (ImageView) holder.getView(R.id.iv_item_special_img);
-        TextView title = (TextView) holder.getView(R.id.tv_item_special_title);
-        TextView desc = (TextView) holder.getView(R.id.tv_item_special_desc);
+        ImageView img = (ImageView) holder.getView(R.id.iv_item_topic);
+        TextView title = (TextView) holder.getView(R.id.tv_item_topic_title);
+        TextView price = (TextView) holder.getView(R.id.tv_item_topic_price);
+        TextView desc = (TextView) holder.getView(R.id.tv_item_topic_desc);
 
-        title.setText(list.getTitle()+"<font color=\"#FF0000\"> &yen;"+list.getPrice_info()+"元起</font>");
+        title.setText(list.getTitle());
+        price.setText(list.getPrice_info()+"元起");
         desc.setText(list.getSubtitle());
         Glide.with(mContext).load(list.getItem_pic_url()).into(img);
     }
+
+
 
 }

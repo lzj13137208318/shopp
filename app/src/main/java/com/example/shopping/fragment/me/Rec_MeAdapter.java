@@ -1,4 +1,4 @@
-package com.example.shopping.adapter;
+package com.example.shopping.fragment.me;
 
 import android.widget.ImageView;
 import android.widget.TextView;

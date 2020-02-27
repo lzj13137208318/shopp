@@ -1,7 +1,7 @@
 package com.example.shopping.model.bean;
 
 import java.util.List;
-
+//人气推荐
 public class HotBean {
     /**
      * errno : 0

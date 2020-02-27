@@ -1,4 +1,4 @@
-package com.example.shopping.fragment;
+package com.example.shopping.fragment.sort;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,9 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.bumptech.glide.Glide;
-import com.example.shopping.SortDescActivity;
+import com.example.shopping.fragment.sort.activity.SortDescActivity;
 import com.example.shopping.R;
-import com.example.shopping.adapter.Rec_sortAdapter;
 import com.example.shopping.base.BaseAdapter;
 import com.example.shopping.base.BaseFragment;
 import com.example.shopping.interfaces.IPersenter;

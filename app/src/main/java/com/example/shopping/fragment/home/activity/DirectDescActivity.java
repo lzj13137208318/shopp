@@ -1,4 +1,4 @@
-package com.example.shopping;
+package com.example.shopping.fragment.home.activity;
 
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.shopping.adapter.Rec_home_descAdapter;
+import com.example.shopping.R;
+import com.example.shopping.fragment.home.Rec_home_descAdapter;
 import com.example.shopping.base.BaseActivity;
 import com.example.shopping.interfaces.desc.DescContract;
 import com.example.shopping.model.bean.GoodsDescBean;
@@ -17,6 +18,7 @@ import com.example.shopping.percenter.GoodsDescPercenter;
 import java.util.ArrayList;
 import java.util.List;
 
+//由 DirectActivity跳转至此
 public class DirectDescActivity extends BaseActivity<DescContract.View, DescContract.Persenter> implements DescContract.View {
 
 

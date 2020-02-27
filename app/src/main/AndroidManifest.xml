@@ -16,10 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".GoodsShoppingActivity"></activity>
-        <activity android:name=".HotActivity" />
-        <activity android:name=".DirectActivity" />
-        <activity android:name=".DirectDescActivity" />
+        <activity android:name=".fragment.GoodsShoppingActivity"></activity>
+        <activity android:name=".fragment.home.activity.HotActivity" />
+        <activity android:name=".fragment.home.activity.DirectActivity" />
+        <activity android:name=".fragment.home.activity.DirectDescActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SortDescActivity" />
+        <activity android:name=".fragment.sort.activity.SortDescActivity" />
     </application>
 
 </manifest>

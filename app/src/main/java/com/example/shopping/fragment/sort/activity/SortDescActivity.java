@@ -1,12 +1,16 @@
-package com.example.shopping;
+package com.example.shopping.fragment.sort.activity;
 
-import android.os.Bundle;
+import android.content.Intent;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.shopping.adapter.Rec_sortItemAdapter;
+import com.example.shopping.R;
+import com.example.shopping.base.BaseAdapter;
+import com.example.shopping.fragment.GoodsShoppingActivity;
+import com.example.shopping.fragment.sort.Rec_sortItemAdapter;
 import com.example.shopping.base.BaseActivity;
 import com.example.shopping.interfaces.sort.SortContract;
 import com.example.shopping.model.bean.CatalogItem;
@@ -17,7 +21,9 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SortDescActivity extends BaseActivity<SortContract.View, SortContract.Percenter> implements TabLayout.BaseOnTabSelectedListener, SortContract.View {
+//由 分类 列表item点击 跳转至此
+public class SortDescActivity extends BaseActivity<SortContract.View, SortContract.Percenter> implements BaseAdapter.OnItemClickListener,
+        TabLayout.BaseOnTabSelectedListener, SortContract.View {
 
     private TextView mTvtitle;
     private TextView mTvdesc;
@@ -26,6 +32,7 @@ public class SortDescActivity extends BaseActivity<SortContract.View, SortContra
     private ArrayList<CatalogItem> lists;
     private Rec_sortItemAdapter rec_sortItemAdapter;
     private int posi;
+    private ArrayList<SortItemListBean.DataBeanX.GoodsListBean> sortItemListBeans;
 
     @Override
     protected int getLayout() {
@@ -52,7 +59,7 @@ public class SortDescActivity extends BaseActivity<SortContract.View, SortContra
                 return false;
             }
         };
-        ArrayList<SortItemListBean.DataBeanX.GoodsListBean> sortItemListBeans = new ArrayList<>();
+        sortItemListBeans = new ArrayList<>();
         mRecGoods.setLayoutManager(gridLayoutManager);
         rec_sortItemAdapter = new Rec_sortItemAdapter(sortItemListBeans);
         mRecGoods.setAdapter(rec_sortItemAdapter);
@@ -106,5 +113,12 @@ public class SortDescActivity extends BaseActivity<SortContract.View, SortContra
     public void SortListDataReturn(SortItemListBean sortItemListBean) {
         List<SortItemListBean.DataBeanX.GoodsListBean> goodsList = sortItemListBean.getData().getGoodsList();
         rec_sortItemAdapter.upData(goodsList);
+    }
+
+    @Override
+    public void onItemClick(View v, int position) {
+        Intent intent = new Intent(this, GoodsShoppingActivity.class);
+        intent.putExtra("id",sortItemListBeans.get(position).getId());
+        startActivity(intent);
     }
 }

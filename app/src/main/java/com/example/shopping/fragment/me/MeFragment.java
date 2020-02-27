@@ -1,4 +1,4 @@
-package com.example.shopping.fragment;
+package com.example.shopping.fragment.me;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.shopping.R;
-import com.example.shopping.adapter.Rec_MeAdapter;
 import com.example.shopping.model.bean.MeBean;
 
 import java.util.ArrayList;

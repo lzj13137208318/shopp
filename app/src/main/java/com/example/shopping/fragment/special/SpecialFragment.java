@@ -1,4 +1,4 @@
-package com.example.shopping.fragment;
+package com.example.shopping.fragment.special;
 
 import android.view.View;
 
@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.shopping.R;
-import com.example.shopping.adapter.Rec_specialAdapter;
 import com.example.shopping.base.BaseFragment;
 import com.example.shopping.interfaces.IPersenter;
 import com.example.shopping.interfaces.home.HomeContract;
@@ -16,7 +15,7 @@ import com.example.shopping.percenter.HomePersenter;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//主题
 public class SpecialFragment extends BaseFragment implements HomeContract.View {
 
 

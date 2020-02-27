@@ -1,5 +1,5 @@
 package com.example.shopping.model.bean;
-
+//新品首发跳转的bean类
 public class BannerInfo_Bean {
 
     /**

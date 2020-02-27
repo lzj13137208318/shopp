@@ -1,7 +1,7 @@
 package com.example.shopping.model.bean;
 
 import java.util.List;
-
+//商品购买详情页底部的list数据
 public class GoodsShoppingBottomListBean {
 
     /**

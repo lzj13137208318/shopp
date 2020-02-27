@@ -1,37 +1,29 @@
-package com.example.shopping;
+package com.example.shopping.fragment.home.activity;
 
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.shopping.adapter.Rec_HotAdapter;
-import com.example.shopping.adapter.Rec_flowlayout;
+import com.example.shopping.fragment.GoodsShoppingActivity;
+import com.example.shopping.R;
 import com.example.shopping.base.BaseActivity;
 import com.example.shopping.base.BaseAdapter;
 import com.example.shopping.interfaces.hot.HotConstract;
 import com.example.shopping.model.bean.BannerInfo_Bean;
 import com.example.shopping.model.bean.HotBean;
 import com.example.shopping.model.bean.NewPageListBean;
-import com.example.shopping.model.bean.TextBean;
 import com.example.shopping.percenter.HotPercenter;
-import com.example.shopping.ui.FlowLayout;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
+//由homefragnment中 人气推荐，新品首发 点击跳转至此
 public class HotActivity extends BaseActivity<HotConstract.View, HotConstract.Percenter> implements HotConstract.View,TabLayout.BaseOnTabSelectedListener,BaseAdapter.OnItemClickListener {
 
     private android.widget.ImageView ivHot;

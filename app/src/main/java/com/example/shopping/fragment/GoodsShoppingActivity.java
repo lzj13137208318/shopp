@@ -1,4 +1,4 @@
-package com.example.shopping;
+package com.example.shopping.fragment;
 
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -6,7 +6,8 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.shopping.adapter.Rec_home_livingHomeAdapter;
+import com.example.shopping.R;
+import com.example.shopping.fragment.home.Rec_home_livingHomeAdapter;
 import com.example.shopping.base.BaseActivity;
 import com.example.shopping.interfaces.shop.GoodsShoppingConstract;
 import com.example.shopping.model.bean.DetailBean;
@@ -18,6 +19,7 @@ import com.youth.banner.Banner;
 import java.util.ArrayList;
 import java.util.List;
 
+//商品购买详情页      由 分类SortDescActivity item点击 ， hotActivity中 item点击跳转至此
 public class GoodsShoppingActivity extends BaseActivity<GoodsShoppingConstract.View, GoodsShoppingConstract.Percenter> implements GoodsShoppingConstract.View {
 
 
@@ -38,6 +40,10 @@ public class GoodsShoppingActivity extends BaseActivity<GoodsShoppingConstract.V
 
     @Override
     protected void initView() {
+        textCollect = (TextView) findViewById(R.id.text_collect);
+        imgCart = (ImageView) findViewById(R.id.img_cart);
+        textShop = (TextView) findViewById(R.id.text_shop);
+        textCart = (TextView) findViewById(R.id.text_cart);
         selectNum = (ImageView) findViewById(R.id.select_num);
         banner = (Banner) findViewById(R.id.banner);
         recGoodsshopping = (RecyclerView) findViewById(R.id.rec_goodsshopping);
@@ -46,10 +52,7 @@ public class GoodsShoppingActivity extends BaseActivity<GoodsShoppingConstract.V
         lists = new ArrayList<>();
         rec_home_livingHomeAdapter = new Rec_home_livingHomeAdapter(lists);
         recGoodsshopping.setAdapter(rec_home_livingHomeAdapter);
-        textCollect = (TextView) findViewById(R.id.text_collect);
-        imgCart = (ImageView) findViewById(R.id.img_cart);
-        textShop = (TextView) findViewById(R.id.text_shop);
-        textCart = (TextView) findViewById(R.id.text_cart);
+
     }
 
     @Override

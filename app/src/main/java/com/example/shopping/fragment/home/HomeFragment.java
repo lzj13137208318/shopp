@@ -1,4 +1,4 @@
-package com.example.shopping.fragment;
+package com.example.shopping.fragment.home;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,15 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
-import com.example.shopping.DirectActivity;
-import com.example.shopping.DirectDescActivity;
-import com.example.shopping.HotActivity;
+import com.example.shopping.fragment.home.activity.DirectActivity;
+import com.example.shopping.fragment.home.activity.DirectDescActivity;
+import com.example.shopping.fragment.home.activity.HotActivity;
 import com.example.shopping.R;
-import com.example.shopping.adapter.Rec_home_HotAdapter;
-import com.example.shopping.adapter.Rec_home_directAdapter;
-import com.example.shopping.adapter.Rec_home_livingHomeAdapter;
-import com.example.shopping.adapter.Rec_home_topicAdapter;
-import com.example.shopping.adapter.Rec_home_yisiAdapter;
 import com.example.shopping.base.BaseAdapter;
 import com.example.shopping.base.BaseFragment;
 import com.example.shopping.interfaces.IPersenter;

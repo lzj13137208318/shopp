@@ -1,4 +1,4 @@
-package com.example.shopping.fragment;
+package com.example.shopping.fragment.cart;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

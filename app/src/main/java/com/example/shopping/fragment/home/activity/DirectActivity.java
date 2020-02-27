@@ -1,17 +1,14 @@
-package com.example.shopping;
+package com.example.shopping.fragment.home.activity;
 
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.ItemTouchUIUtil;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.shopping.R;
 import com.example.shopping.Utils.RecyclerViewSpacesItemDecoration;
-import com.example.shopping.adapter.Rec_directAdapter;
 import com.example.shopping.base.BaseActivity;
 import com.example.shopping.base.BaseAdapter;
 import com.example.shopping.interfaces.direct.DirectContract;
@@ -22,6 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+//homgfragment中品牌制造商直供跳转到此
 public class DirectActivity extends BaseActivity<DirectContract.View,DirectContract.Percenter> implements DirectContract.View, BaseAdapter.OnItemClickListener {
 
     private RecyclerView rec;
