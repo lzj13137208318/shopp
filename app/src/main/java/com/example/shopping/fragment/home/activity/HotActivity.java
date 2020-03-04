@@ -1,14 +1,21 @@
 package com.example.shopping.fragment.home.activity;
 
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.shopping.adapter.Rec_flowlayout;
 import com.example.shopping.fragment.GoodsShoppingActivity;
 import com.example.shopping.R;
 import com.example.shopping.base.BaseActivity;
@@ -17,7 +24,9 @@ import com.example.shopping.interfaces.hot.HotConstract;
 import com.example.shopping.model.bean.BannerInfo_Bean;
 import com.example.shopping.model.bean.HotBean;
 import com.example.shopping.model.bean.NewPageListBean;
+import com.example.shopping.model.bean.TextBean;
 import com.example.shopping.percenter.HotPercenter;
+import com.example.shopping.ui.FlowLayout;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -139,23 +148,21 @@ public class HotActivity extends BaseActivity<HotConstract.View, HotConstract.Pe
                     break;
                 case 2:
                     //分类展开
-                /*LinearLayout lin = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.re, null);
-                RecyclerView recyclerView = lin.findViewById(R.id.rec_flowlayout);
+                FlowLayout flowLayout = new FlowLayout(this);
+                ViewGroup.LayoutParams layoutParams = new FlowLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                for (int i = 0; i < 10; i++) {
+                    TextView textView = new TextView(this);
+                    textView.setPadding(i * 10,10,i * 10,10);
+                    textView.setBackgroundColor(Color.WHITE);
+                    textView.setText("哈哈哈哈");
+                    textView.setTextColor(Color.BLACK);
+                    textView.setLayoutParams(layoutParams);
+                    flowLayout.addView(textView);
+                 }
 
-                ArrayList<TextBean> textBeans = new ArrayList<>();
-                textBeans.add(new TextBean("全部"));
-                textBeans.add(new TextBean("居家"));
-                textBeans.add(new TextBean("配件"));
-                textBeans.add(new TextBean("饮食"));
-                textBeans.add(new TextBean("志趣"));
-
-                recyclerView.setLayoutManager(new LinearLayoutManager(this));
-                Rec_flowlayout rec_flowlayout = new Rec_flowlayout(textBeans);
-                recyclerView.setAdapter(rec_flowlayout);
-
-                PopupWindow popupWindow = new PopupWindow(recyclerView, LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-                popupWindow.setContentView(recyclerView);
-                popupWindow.showAsDropDown(tabHot,0,0);*/
+                PopupWindow popupWindow = new PopupWindow(flowLayout, LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+                popupWindow.setContentView(flowLayout);
+                popupWindow.showAsDropDown(tabHot,0,0);
 
             }
         }else {

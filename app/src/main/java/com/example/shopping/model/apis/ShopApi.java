@@ -2,6 +2,7 @@ package com.example.shopping.model.apis;
 
 import com.example.shopping.model.bean.BannerInfo_Bean;
 import com.example.shopping.model.bean.BrandBean;
+import com.example.shopping.model.bean.CartBean;
 import com.example.shopping.model.bean.DetailBean;
 import com.example.shopping.model.bean.FenLeiBean;
 import com.example.shopping.model.bean.FenLei_listBean;
@@ -10,11 +11,16 @@ import com.example.shopping.model.bean.GoodsDescListBean;
 import com.example.shopping.model.bean.GoodsShoppingBottomListBean;
 import com.example.shopping.model.bean.HotBean;
 import com.example.shopping.model.bean.NewPageListBean;
+import com.example.shopping.model.bean.RegisterBean;
 import com.example.shopping.model.bean.ShouYeBean;
 import com.example.shopping.model.bean.SortItemListBean;
+import com.example.shopping.model.bean.UserBean;
 
 import io.reactivex.Flowable;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface ShopApi {
@@ -70,5 +76,22 @@ public interface ShopApi {
     //商品详情页底部list数据
     @GET("goods/related")
     Flowable<GoodsShoppingBottomListBean> getGoodsShoppingBottomListlData(@Query("id") int id);
+
+    //登录
+    @POST("auth/login")
+    @FormUrlEncoded
+    Flowable<UserBean> login(@Field("nickname") String nickname, @Field("password") String password);
+
+    //注册
+    @POST("auth/register")
+    @FormUrlEncoded
+    Flowable<RegisterBean> register(@Field("nickname") String nickname, @Field("password") String password);
+
+    //添加购物车
+    @POST("cart/add")
+    @FormUrlEncoded
+    Flowable<CartBean> getCarNum(@Field("goodsId") String goodsid,
+                                 @Field("number") int number,
+                                 @Field("productId") String productid);
 
 }

@@ -3,6 +3,7 @@ package com.example.shopping.model.http;
 import android.util.Log;
 
 
+import com.example.shopping.Utils.SpUtils;
 import com.example.shopping.constants.Constant;
 import com.example.shopping.model.apis.ShopApi;
 
@@ -53,6 +54,7 @@ public class HttpManager {
         cache = new Cache(file, 1024 * 1024 * 100);
         return new OkHttpClient.Builder()
                 .cache(cache)  //缓存
+
                 .addInterceptor(new LoggingInterceptor())   //日志拦截器
               //  .addNetworkInterceptor(new Myintercepter())   //网络拦截器
                 .addInterceptor(new HeaderInterceptor())
@@ -70,6 +72,8 @@ public class HttpManager {
         public Response intercept(Chain chain) throws IOException {
             Request build = chain.request().newBuilder()
                     .header("Connection","keep-alive")
+                    .addHeader("Client-Type", "ANDROID")
+                    .addHeader("X-Nideshop-Token", SpUtils.getInstance().getString("token"))
                     .build();
             return chain.proceed(build);
         }

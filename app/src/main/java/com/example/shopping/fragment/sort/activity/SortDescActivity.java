@@ -63,6 +63,7 @@ public class SortDescActivity extends BaseActivity<SortContract.View, SortContra
         mRecGoods.setLayoutManager(gridLayoutManager);
         rec_sortItemAdapter = new Rec_sortItemAdapter(sortItemListBeans);
         mRecGoods.setAdapter(rec_sortItemAdapter);
+        rec_sortItemAdapter.setOnItemClickListener(this);
 
         //实现tab的动态添加文字
         for (int i = 0; i < lists.size(); i++) {
@@ -115,6 +116,7 @@ public class SortDescActivity extends BaseActivity<SortContract.View, SortContra
         rec_sortItemAdapter.upData(goodsList);
     }
 
+    //item的点击监听
     @Override
     public void onItemClick(View v, int position) {
         Intent intent = new Intent(this, GoodsShoppingActivity.class);

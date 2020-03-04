@@ -38,8 +38,7 @@ public class DetailBean {
         this.data = data;
     }
 
-    public static  class DataBeanX {
-
+    public static class DataBeanX {
         /**
          * info : {"id":1155000,"category_id":1008009,"goods_sn":"1155000","name":"清新趣粉全棉四件套 条纹绿格","brand_id":0,"goods_number":100,"keywords":"","goods_brief":"清新趣粉全棉四件套 青粉拼接","goods_desc":"<p><img src=\"http://yanxuan.nosdn.127.net/162f14bce2afba3a484ce8fb5da1e58b.jpg\" _src=\"http://yanxuan.nosdn.127.net/162f14bce2afba3a484ce8fb5da1e58b.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/1f7942650759087591c5983b8833b0b0.jpg\" _src=\"http://yanxuan.nosdn.127.net/1f7942650759087591c5983b8833b0b0.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/7b2c61359c3323f426a0214d79f52e5d.jpg\" _src=\"http://yanxuan.nosdn.127.net/7b2c61359c3323f426a0214d79f52e5d.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/4ef5a035b31b1dea51c0f9ad89df9af3.jpg\" _src=\"http://yanxuan.nosdn.127.net/4ef5a035b31b1dea51c0f9ad89df9af3.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/e78cd4ddd9bd39ab9a488fef9b5f7b3a.jpg\" _src=\"http://yanxuan.nosdn.127.net/e78cd4ddd9bd39ab9a488fef9b5f7b3a.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/6cce2f34025ab487af8707ee4cf61373.jpg\" _src=\"http://yanxuan.nosdn.127.net/6cce2f34025ab487af8707ee4cf61373.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/248de06b79ddf1bc6e28a00ffbbb97d0.jpg\" _src=\"http://yanxuan.nosdn.127.net/248de06b79ddf1bc6e28a00ffbbb97d0.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/c2306432efd11b36979518c91f3dac76.jpg\" _src=\"http://yanxuan.nosdn.127.net/c2306432efd11b36979518c91f3dac76.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/d62be6560ff53b1fd6b8f83664965758.jpg\" _src=\"http://yanxuan.nosdn.127.net/d62be6560ff53b1fd6b8f83664965758.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/879123cb7355ce5aa2df371bf8821754.jpg\" _src=\"http://yanxuan.nosdn.127.net/879123cb7355ce5aa2df371bf8821754.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/24bd066e91fe31da4c21fb6f13d0b944.jpg\" _src=\"http://yanxuan.nosdn.127.net/24bd066e91fe31da4c21fb6f13d0b944.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/9da18ea054a561a17c36e41d693bfdae.jpg\" _src=\"http://yanxuan.nosdn.127.net/9da18ea054a561a17c36e41d693bfdae.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/71873676e788a2d2aa5184f46cc0f30e.jpg\" _src=\"http://yanxuan.nosdn.127.net/71873676e788a2d2aa5184f46cc0f30e.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/b3f9463598c55d2c55428b2eef8bf556.jpg\" _src=\"http://yanxuan.nosdn.127.net/b3f9463598c55d2c55428b2eef8bf556.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/d1321c2db83e7485c67265427fa986bc.jpg\" _src=\"http://yanxuan.nosdn.127.net/d1321c2db83e7485c67265427fa986bc.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/4cc8bc6028a45eddab15e21ebc7caef7.jpg\" _src=\"http://yanxuan.nosdn.127.net/4cc8bc6028a45eddab15e21ebc7caef7.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/27453a8037edc367424e6432a3e5a59c.jpg\" _src=\"http://yanxuan.nosdn.127.net/27453a8037edc367424e6432a3e5a59c.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/528ef8f963f9733d8cfd0f50556ae110.jpg\" _src=\"http://yanxuan.nosdn.127.net/528ef8f963f9733d8cfd0f50556ae110.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/cb3c92fed21740cc6b5c5dc16fc60508.jpg\" _src=\"http://yanxuan.nosdn.127.net/cb3c92fed21740cc6b5c5dc16fc60508.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/0dee0fd961eaffd7aa2bdaf62d2ab126.jpg\" _src=\"http://yanxuan.nosdn.127.net/0dee0fd961eaffd7aa2bdaf62d2ab126.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/661e1cb14a801d03f28626196c00d14f.jpg\" _src=\"http://yanxuan.nosdn.127.net/661e1cb14a801d03f28626196c00d14f.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/2b6a2f6a7f3a45039b0b7c572c2eeed8.jpg\" _src=\"http://yanxuan.nosdn.127.net/2b6a2f6a7f3a45039b0b7c572c2eeed8.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/e46db149caf4b825f4a90627e0db6a79.jpg\" _src=\"http://yanxuan.nosdn.127.net/e46db149caf4b825f4a90627e0db6a79.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/98673c4ff33fc8c55bf88945dbef364c.jpg\" _src=\"http://yanxuan.nosdn.127.net/98673c4ff33fc8c55bf88945dbef364c.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/9a2324cb4ff8f4332c51343efeaafe8e.jpg\" _src=\"http://yanxuan.nosdn.127.net/9a2324cb4ff8f4332c51343efeaafe8e.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/eb0d21207bf5b26592511ef80e48eb91.jpg\" _src=\"http://yanxuan.nosdn.127.net/eb0d21207bf5b26592511ef80e48eb91.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/be386763462ada086662387e40431c85.jpg\" _src=\"http://yanxuan.nosdn.127.net/be386763462ada086662387e40431c85.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/71724c37bc98358af22d25a4edebe12d.jpg\" _src=\"http://yanxuan.nosdn.127.net/71724c37bc98358af22d25a4edebe12d.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/3226eb33802d18a6baa093b1ccc3f412.jpg\" _src=\"http://yanxuan.nosdn.127.net/3226eb33802d18a6baa093b1ccc3f412.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/32370f76a781924f6e0252abdea047f6.jpg\" _src=\"http://yanxuan.nosdn.127.net/32370f76a781924f6e0252abdea047f6.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/22c82828b81e11053849f3c9f826f453.jpg\" _src=\"http://yanxuan.nosdn.127.net/22c82828b81e11053849f3c9f826f453.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/e8c42123ac126046542176d511a29139.jpg\" _src=\"http://yanxuan.nosdn.127.net/e8c42123ac126046542176d511a29139.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/d981ab4821ca98c89e71d2a2a9b23330.jpg\" _src=\"http://yanxuan.nosdn.127.net/d981ab4821ca98c89e71d2a2a9b23330.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/995a72c9c8bb895f5445a473daccc218.jpg\" _src=\"http://yanxuan.nosdn.127.net/995a72c9c8bb895f5445a473daccc218.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/251151c89c54c9c272288ed461533a8c.jpg\" _src=\"http://yanxuan.nosdn.127.net/251151c89c54c9c272288ed461533a8c.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/bba4921b09f7c9eb4bae76259d7d82e2.jpg\" _src=\"http://yanxuan.nosdn.127.net/bba4921b09f7c9eb4bae76259d7d82e2.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/0fd159ef30bfd4cb6e4c37141ad96666.jpg\" _src=\"http://yanxuan.nosdn.127.net/0fd159ef30bfd4cb6e4c37141ad96666.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/4e31861a89e1e10be81f5290e31e6b85.jpg\" _src=\"http://yanxuan.nosdn.127.net/4e31861a89e1e10be81f5290e31e6b85.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/3404e5c9b9e9e3855a52831a1d4acad7.jpg\" _src=\"http://yanxuan.nosdn.127.net/3404e5c9b9e9e3855a52831a1d4acad7.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/5d15b51fc382847b8de4a4b6fad3646b.jpg\" _src=\"http://yanxuan.nosdn.127.net/5d15b51fc382847b8de4a4b6fad3646b.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/6fd940b500b07c5157a7db17d858c56f.jpg\" _src=\"http://yanxuan.nosdn.127.net/6fd940b500b07c5157a7db17d858c56f.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/4cf02bfda7429cb78da05f8b521e5195.jpg\" _src=\"http://yanxuan.nosdn.127.net/4cf02bfda7429cb78da05f8b521e5195.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/74ed4ea956e43e6b1f37b1dd31c6feee.jpg\" _src=\"http://yanxuan.nosdn.127.net/74ed4ea956e43e6b1f37b1dd31c6feee.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/77d288d7c8e815e014f6ceac652adf83.jpg\" _src=\"http://yanxuan.nosdn.127.net/77d288d7c8e815e014f6ceac652adf83.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/18478afad61f4fad519a4fe598c38bb8.jpg\" _src=\"http://yanxuan.nosdn.127.net/18478afad61f4fad519a4fe598c38bb8.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/f527072aeaed7abb974551d7ad93faf4.jpg\" _src=\"http://yanxuan.nosdn.127.net/f527072aeaed7abb974551d7ad93faf4.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/276d97cc862f718bfb7cd8a5970d2b9a.jpg\" _src=\"http://yanxuan.nosdn.127.net/276d97cc862f718bfb7cd8a5970d2b9a.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/1765a6390fd9116320230cea1b2e2570.jpg\" _src=\"http://yanxuan.nosdn.127.net/1765a6390fd9116320230cea1b2e2570.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/ee6eff91b9e9ee9c8a70cf9ad59cd274.jpg\" _src=\"http://yanxuan.nosdn.127.net/ee6eff91b9e9ee9c8a70cf9ad59cd274.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/4db4a90e1e83e2e77b4b17deb6b618c4.jpg\" _src=\"http://yanxuan.nosdn.127.net/4db4a90e1e83e2e77b4b17deb6b618c4.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/3e58b2129b6ca7f8f845d88ccb1ecda6.jpg\" _src=\"http://yanxuan.nosdn.127.net/3e58b2129b6ca7f8f845d88ccb1ecda6.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/fe901e2f92e213b444f4950a6adb320f.jpg\" _src=\"http://yanxuan.nosdn.127.net/fe901e2f92e213b444f4950a6adb320f.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/11c552fba5a1ba0bf6189da2d243db7d.jpg\" _src=\"http://yanxuan.nosdn.127.net/11c552fba5a1ba0bf6189da2d243db7d.jpg\" style=\"\"/><\/p><p><img src=\"http://yanxuan.nosdn.127.net/4c78602cdbba3992711257325de376ed.jpg\" _src=\"http://yanxuan.nosdn.127.net/4c78602cdbba3992711257325de376ed.jpg\" style=\"\"/><\/p><p><br/><\/p>","is_on_sale":1,"add_time":0,"sort_order":12,"is_delete":0,"attribute_category":0,"counter_price":0,"extra_price":0,"is_new":0,"goods_unit":"件","primary_pic_url":"http://yanxuan.nosdn.127.net/7335f6e807e8507994710bca848de2d8.jpg","list_pic_url":"http://yanxuan.nosdn.127.net/d7d6ef1f1865991077384761b4521dce.png","retail_price":399,"sell_volume":395,"primary_product_id":1162001,"unit_price":0,"promotion_desc":"限时购","promotion_tag":"","app_exclusive_price":0,"is_app_exclusive":0,"is_limited":0,"is_hot":0}
          * gallery : [{"id":673,"goods_id":1155000,"img_url":"http://yanxuan.nosdn.127.net/517914d4f7d872b17a55e9c3864df717.jpg","img_desc":"","sort_order":5},{"id":674,"goods_id":1155000,"img_url":"http://yanxuan.nosdn.127.net/6bdf224d6c0276a2737d6af775b6ed8a.jpg","img_desc":"","sort_order":5},{"id":675,"goods_id":1155000,"img_url":"http://yanxuan.nosdn.127.net/6fa8774f6da6cc473ba3714aec95f6b6.jpg","img_desc":"","sort_order":5},{"id":676,"goods_id":1155000,"img_url":"http://yanxuan.nosdn.127.net/2eca5d0f8a1ce61baf32311264cebdd1.jpg","img_desc":"","sort_order":5}]
@@ -54,10 +53,12 @@ public class DetailBean {
 
         private InfoBean info;
         private int userHasCollect;
+        private CommentBean comment;
         private BrandBean brand;
         private List<GalleryBean> gallery;
         private List<AttributeBean> attribute;
         private List<IssueBean> issue;
+        private List<?> specificationList;
         private List<ProductListBean> productList;
 
         public InfoBean getInfo() {
@@ -74,6 +75,14 @@ public class DetailBean {
 
         public void setUserHasCollect(int userHasCollect) {
             this.userHasCollect = userHasCollect;
+        }
+
+        public CommentBean getComment() {
+            return comment;
+        }
+
+        public void setComment(CommentBean comment) {
+            this.comment = comment;
         }
 
         public BrandBean getBrand() {
@@ -106,6 +115,14 @@ public class DetailBean {
 
         public void setIssue(List<IssueBean> issue) {
             this.issue = issue;
+        }
+
+        public List<?> getSpecificationList() {
+            return specificationList;
+        }
+
+        public void setSpecificationList(List<?> specificationList) {
+            this.specificationList = specificationList;
         }
 
         public List<ProductListBean> getProductList() {
@@ -422,8 +439,39 @@ public class DetailBean {
             }
         }
 
-        public static class GalleryBean {
+        public static class CommentBean {
+            /**
+             * count : 0
+             * data : {}
+             */
 
+            private int count;
+            private DataBean data;
+
+            public int getCount() {
+                return count;
+            }
+
+            public void setCount(int count) {
+                this.count = count;
+            }
+
+            public DataBean getData() {
+                return data;
+            }
+
+            public void setData(DataBean data) {
+                this.data = data;
+            }
+
+            public static class DataBean {
+            }
+        }
+
+        public static class BrandBean {
+        }
+
+        public static class GalleryBean {
             /**
              * id : 673
              * goods_id : 1155000
@@ -480,7 +528,6 @@ public class DetailBean {
         }
 
         public static class AttributeBean {
-
             /**
              * value : 100% 棉
              * name : 材质
@@ -507,7 +554,6 @@ public class DetailBean {
         }
 
         public static class IssueBean {
-
             /**
              * id : 1
              * goods_id : 1127052
@@ -555,7 +601,6 @@ public class DetailBean {
         }
 
         public static class ProductListBean {
-
             /**
              * id : 241
              * goods_id : 1155000

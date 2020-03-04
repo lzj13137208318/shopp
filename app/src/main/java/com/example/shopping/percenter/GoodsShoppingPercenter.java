@@ -4,6 +4,7 @@ import com.example.shopping.Utils.RxUtils;
 import com.example.shopping.base.BasePersenter;
 import com.example.shopping.interfaces.shop.GoodsShoppingConstract;
 import com.example.shopping.model.CommonSubscriber;
+import com.example.shopping.model.bean.CartBean;
 import com.example.shopping.model.bean.DetailBean;
 import com.example.shopping.model.bean.GoodsShoppingBottomListBean;
 import com.example.shopping.model.http.HttpManager;
@@ -33,5 +34,17 @@ public class GoodsShoppingPercenter extends BasePersenter<GoodsShoppingConstract
                     }
                 })
         );
+    }
+
+    @Override
+    public void addCartData(String goodsId, int number, String productId) {
+        addSubscribe(HttpManager.getShopApi().getCarNum(goodsId,number,productId)
+        .compose(RxUtils.<CartBean>rxScheduler())
+        .subscribeWith(new CommonSubscriber<CartBean>(mView) {
+            @Override
+            public void onNext(CartBean cartBean) {
+                mView.CartDataReturn(cartBean);
+            }
+        }));
     }
 }
