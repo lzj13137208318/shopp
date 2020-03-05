@@ -43,7 +43,7 @@ public class GoodsShoppingPercenter extends BasePersenter<GoodsShoppingConstract
         .subscribeWith(new CommonSubscriber<CartBean>(mView) {
             @Override
             public void onNext(CartBean cartBean) {
-                mView.CartDataReturn(cartBean);
+               mView.CartDataReturn(cartBean);
             }
         }));
     }

@@ -1,22 +1,42 @@
 package com.example.shopping.fragment.cart;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.example.shopping.R;
+import com.example.shopping.base.BaseFragment;
+import com.example.shopping.interfaces.IPersenter;
 
 
-public class CartFragment extends Fragment {
-    @Nullable
+public class CartFragment extends BaseFragment {
+
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_cart, null);
-        return view;
+    protected int getLayout() {
+        return R.layout.fragment_cart;
+    }
+
+    @Override
+    protected void initView(View view) {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected IPersenter createPersenter() {
+        return null;
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void showError(String err) {
+
     }
 }

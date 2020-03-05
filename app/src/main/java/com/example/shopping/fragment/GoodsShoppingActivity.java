@@ -100,7 +100,7 @@ public class GoodsShoppingActivity extends BaseActivity<GoodsShoppingConstract.V
             Alpha(1.0f);
             //说明已经登录过了
             if (!token.equals("")){
-                persenter.addCartData(detailBean.getData().getInfo().getId()+"",Integer.parseInt(num.getText().toString()),detailBean.getData().getInfo().getRetail_price()+"");
+                persenter.addCartData(detailBean.getData().getInfo().getId()+"",Integer.parseInt(num.getText().toString()),detailBean.getData().getGallery().get(0).getId()+"");
             }else {
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivityForResult(intent,100);
@@ -235,7 +235,10 @@ public class GoodsShoppingActivity extends BaseActivity<GoodsShoppingConstract.V
 
     @Override
     public void CartDataReturn(CartBean cartBean) {
-        List<CartBean.DataBean.CartListBean> cartList = cartBean.getData().getCartList();
-        shop_num.setText(cartList.size()+"");
+        if (cartBean.getErrno()==400){
+            Toast.makeText(context, cartBean.getErrmsg(), Toast.LENGTH_SHORT).show();
+        }else {
+            shop_num.setText(cartBean.getData().getCartList().size());
+        }
     }
 }

@@ -69,7 +69,6 @@ public class FlowLayout extends ViewGroup {
         for (int i = 0; i < childCount; i++) {
             View childView = getChildAt(i);
             //LayoutParams
-            LayoutParams childParams = childView.getLayoutParams();
             LayoutParams childLP = childView.getLayoutParams();
 
             int childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec, paddingLeft + paddingRight,
