@@ -104,6 +104,8 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.Ba
         this.onItemClickListener = onItemClickListener;
     }
 
+
+
     /**
      * 条目点击接口
      */

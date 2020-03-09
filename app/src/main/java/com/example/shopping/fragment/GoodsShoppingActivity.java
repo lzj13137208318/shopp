@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -45,6 +48,7 @@ import butterknife.OnClick;
 //商品购买详情页      由 分类SortDescActivity item点击 ， hotActivity中 item点击跳转至此
 public class GoodsShoppingActivity extends BaseActivity<GoodsShoppingConstract.View, GoodsShoppingConstract.Percenter> implements GoodsShoppingConstract.View {
 
+
     private ImageView selectNum;
     private Banner banner;
     private androidx.recyclerview.widget.RecyclerView recGoodsshopping;
@@ -63,6 +67,7 @@ public class GoodsShoppingActivity extends BaseActivity<GoodsShoppingConstract.V
     @BindView(R.id.shop_cart_num)
     TextView shop_num;
     private TextView num;
+    private CartBean cartBean;
 
     @Override
     protected int getLayout() {
@@ -84,6 +89,10 @@ public class GoodsShoppingActivity extends BaseActivity<GoodsShoppingConstract.V
         rec_home_livingHomeAdapter = new Rec_home_livingHomeAdapter(lists);
         recGoodsshopping.setAdapter(rec_home_livingHomeAdapter);
 
+        if (cartBean != null && cartBean.getData() != null && cartBean.getData().getCartList() != null){
+            shop_num.setText(cartBean.getData().getCartList().size());
+        }
+
     }
     //选择购买数量 弹出popupwind
     @OnClick(R.id.select_num)
@@ -100,7 +109,9 @@ public class GoodsShoppingActivity extends BaseActivity<GoodsShoppingConstract.V
             Alpha(1.0f);
             //说明已经登录过了
             if (!token.equals("")){
-                persenter.addCartData(detailBean.getData().getInfo().getId()+"",Integer.parseInt(num.getText().toString()),detailBean.getData().getGallery().get(0).getId()+"");
+                persenter.addCartData(detailBean.getData().getInfo().getId()+"",
+                        Integer.parseInt(num.getText().toString()),
+                        detailBean.getData().getGallery().get(0).getId()+"");
             }else {
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivityForResult(intent,100);
@@ -110,6 +121,7 @@ public class GoodsShoppingActivity extends BaseActivity<GoodsShoppingConstract.V
             Alpha(0.5f);
         }
     }
+
 
     @Override
     public void startActivityForResult(Intent intent, int requestCode, @Nullable Bundle options) {
@@ -235,6 +247,7 @@ public class GoodsShoppingActivity extends BaseActivity<GoodsShoppingConstract.V
 
     @Override
     public void CartDataReturn(CartBean cartBean) {
+        this.cartBean = cartBean;
         if (cartBean.getErrno()==400){
             Toast.makeText(context, cartBean.getErrmsg(), Toast.LENGTH_SHORT).show();
         }else {

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="10dp"
+    android:paddingLeft="5dp"
+    tools:context=".OrderActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/order_finishi"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:text="〈"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="确认订单" />
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <ImageView
+        android:id="@+id/order_this"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@mipmap/timg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <TextView
+        android:id="@+id/order_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxEms="8"
+        android:text="用户名"
+        app:layout_constraintLeft_toRightOf="@id/order_this"
+        app:layout_constraintTop_toTopOf="@id/order_this" />
+
+    <TextView
+        android:id="@+id/order_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:maxEms="11"
+        android:text="手机号"
+        app:layout_constraintLeft_toRightOf="@id/order_name"
+        app:layout_constraintTop_toTopOf="@id/order_this" />
+
+    <TextView
+        android:id="@+id/order_site"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请选择收货地址"
+        app:layout_constraintBottom_toBottomOf="@id/order_this"
+        app:layout_constraintLeft_toRightOf="@id/order_this" />
+
+    <TextView
+        android:id="@+id/order_site_updata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="〉"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/order_this"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/order_goods_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/loadding"
+        app:layout_constraintLeft_toLeftOf="@id/order_this"
+        app:layout_constraintTop_toBottomOf="@id/order_this" />
+    <TextView
+        android:id="@+id/order_goods_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/order_goods_img"
+        app:layout_constraintLeft_toRightOf="@id/order_goods_img"
+        android:text="商品描述"
+        android:maxEms="8"
+        android:maxLines="2"/>
+    <TextView
+        android:id="@+id/order_goods_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/order_goods_img"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="单价"/>
+    <TextView
+        android:id="@+id/order_goods_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="×1"
+        app:layout_constraintTop_toBottomOf="@id/order_goods_price"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="合计："
+        app:layout_constraintBottom_toBottomOf="@id/pay_now"
+        app:layout_constraintTop_toTopOf="@id/pay_now"
+        app:layout_constraintRight_toLeftOf="@id/pay_now"/>
+    <Button
+        android:id="@+id/pay_now"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="立即支付"
+        android:textColor="@color/toolbar"
+        android:background="@drawable/circle"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

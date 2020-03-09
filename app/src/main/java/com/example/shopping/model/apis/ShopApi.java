@@ -3,6 +3,7 @@ package com.example.shopping.model.apis;
 import com.example.shopping.model.bean.BannerInfo_Bean;
 import com.example.shopping.model.bean.BrandBean;
 import com.example.shopping.model.bean.CartBean;
+import com.example.shopping.model.bean.CartListsBean;
 import com.example.shopping.model.bean.DetailBean;
 import com.example.shopping.model.bean.FenLeiBean;
 import com.example.shopping.model.bean.FenLei_listBean;
@@ -93,5 +94,8 @@ public interface ShopApi {
     Flowable<CartBean> getCarNum(@Field("goodsId") String goodsid,
                                  @Field("number") int number,
                                  @Field("productId") String productid);
+
+    @GET("cart/index")
+    Flowable<CartListsBean> getCartListsData();
 
 }

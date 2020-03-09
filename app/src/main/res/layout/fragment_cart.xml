@@ -23,6 +23,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="全选"
+                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/cart_all"/>
@@ -39,12 +40,13 @@
             android:layout_weight="1"
             android:layout_height="match_parent">
             <TextView
-                android:gravity="center"
+                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="总价"/>
             <TextView
                 android:id="@+id/cart_select_price"
+                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -55,17 +57,22 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:gravity="center"
             android:layout_height="match_parent">
             <TextView
+                android:id="@+id/cart_edit"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:layout_height="match_parent"
                 android:text="编辑"/>
             <TextView
+                android:id="@+id/cart_order"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:layout_height="match_parent"
+                android:textColor="@color/toolbar"
+                android:background="@color/colorAccent"
                 android:text="下单"/>
         </LinearLayout>
     </LinearLayout>

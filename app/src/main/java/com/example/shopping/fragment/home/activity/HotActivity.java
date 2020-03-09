@@ -118,6 +118,7 @@ public class HotActivity extends BaseActivity<HotConstract.View, HotConstract.Pe
         goodsList.clear();
         for (int i = 0; i < goodsLists.size(); i++) {
             HotBean.DataBeanX.GoodsListBean goodsListBean = new HotBean.DataBeanX.GoodsListBean();
+            goodsListBean.setId(goodsLists.get(i).getId());
             goodsListBean.setName(goodsLists.get(i).getName());
             goodsListBean.setList_pic_url(goodsLists.get(i).getList_pic_url());
             goodsListBean.setRetail_price(goodsLists.get(i).getRetail_price());
@@ -244,7 +245,8 @@ public class HotActivity extends BaseActivity<HotConstract.View, HotConstract.Pe
     @Override
     public void onItemClick(View v, int position) {
         Intent intent = new Intent(this, GoodsShoppingActivity.class);
-        intent.putExtra("id",goodsList.get(position).getId());
+        int id = goodsList.get(position).getId();
+        intent.putExtra("id",id);
         startActivity(intent);
     }
 }
