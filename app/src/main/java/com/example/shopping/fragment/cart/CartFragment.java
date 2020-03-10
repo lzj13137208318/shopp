@@ -34,9 +34,12 @@ public class CartFragment extends BaseFragment<CartContract.View, CartContract.P
         String s = cartEdit.getText().toString();
         if (s.equals("编辑")){
             //让商品添加永久标记
-            cartAdapter.selectAll();
+            // true为 编辑 说明是正常状态
+            // false为 完成 说明是编辑状态
+            cartAdapter.selectAll(true);
         }else {
             //让商品添加临时标记
+            cartAdapter.selectAll(false);
         }
     }
 
@@ -48,9 +51,10 @@ public class CartFragment extends BaseFragment<CartContract.View, CartContract.P
         String s = cartEdit.getText().toString();
         if (s.equals("编辑")){
             cartEdit.setText("完成");
-
+            cartAdapter.showAndHind(false);
         }else {
             cartEdit.setText("编辑");
+            cartAdapter.showAndHind(true);
         }
     }
 

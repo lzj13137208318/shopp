@@ -20,15 +20,6 @@
         android:id="@+id/item_cart_img"
         android:background="@color/bg"/>
     <TextView
-        android:id="@+id/item_cart_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:text="商品名"
-        app:layout_constraintTop_toTopOf="@id/item_cart_img"
-        android:layout_marginLeft="6dp"
-        app:layout_constraintLeft_toRightOf="@id/item_cart_img"/>
-    <TextView
         android:id="@+id/item_cart_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,16 +29,35 @@
         app:layout_constraintBottom_toBottomOf="@id/item_cart_img"
         android:layout_marginLeft="6dp"
         app:layout_constraintLeft_toRightOf="@id/item_cart_img"/>
-    <TextView
-        android:id="@+id/item_cart_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_cart_ConstraintLayout"
+        android:layout_marginLeft="6dp"
+        android:layout_width="0dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="10dp"
-        android:text="x9"
-        android:textSize="24sp"/>
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/item_cart_img"
+        app:layout_constraintTop_toTopOf="@id/item_cart_img"
+        app:layout_constraintLeft_toRightOf="@id/item_cart_img">
+        <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/item_cart_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="商品名"/>
+        <TextView
+            android:id="@+id/item_cart_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="10dp"
+            android:text="x9"
+            android:textSize="24sp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_cart_edit_ConstraintLayout"
