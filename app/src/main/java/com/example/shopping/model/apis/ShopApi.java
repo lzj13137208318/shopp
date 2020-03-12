@@ -4,6 +4,7 @@ import com.example.shopping.model.bean.BannerInfo_Bean;
 import com.example.shopping.model.bean.BrandBean;
 import com.example.shopping.model.bean.CartBean;
 import com.example.shopping.model.bean.CartListsBean;
+import com.example.shopping.model.bean.CartUpdataBean;
 import com.example.shopping.model.bean.DetailBean;
 import com.example.shopping.model.bean.FenLeiBean;
 import com.example.shopping.model.bean.FenLei_listBean;
@@ -95,7 +96,15 @@ public interface ShopApi {
                                  @Field("number") int number,
                                  @Field("productId") String productid);
 
+    //获取购物车数据
     @GET("cart/index")
     Flowable<CartListsBean> getCartListsData();
 
+    //修改商品数据
+    @POST("cart/update")
+    @FormUrlEncoded
+    Flowable<CartUpdataBean> setGoodsMum(@Field("productId") String productId,
+                                         @Field("goodsId") String goodsId,
+                                         @Field("number") String number,
+                                         @Field("id") String id);
 }

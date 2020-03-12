@@ -1,13 +1,13 @@
 package com.example.shopping.model.bean;
 
 import java.util.List;
-//获取商品列表
-public class CartListsBean {
+//商品修改的bean
+public class CartUpdataBean {
 
     /**
      * errno : 0
      * errmsg :
-     * data : {"cartList":[{"id":120,"user_id":5,"session_id":"1","goods_id":1147046,"goods_sn":"1147046","product_id":226,"goods_name":"清新趣粉系列居家地毯 条纹间粉","market_price":599,"retail_price":599,"number":7,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":1,"list_pic_url":"http://yanxuan.nosdn.127.net/655d718df8107f8e7fd1dc6140e29039.png"},{"id":122,"user_id":5,"session_id":"1","goods_id":1155000,"goods_sn":"1155000","product_id":241,"goods_name":"清新趣粉全棉四件套 条纹绿格","market_price":399,"retail_price":399,"number":5,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":1,"list_pic_url":"http://yanxuan.nosdn.127.net/d7d6ef1f1865991077384761b4521dce.png"},{"id":123,"user_id":5,"session_id":"1","goods_id":1116033,"goods_sn":"1116033","product_id":171,"goods_name":"多功能人体工学转椅","market_price":1399,"retail_price":1399,"number":3,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":1,"list_pic_url":"http://yanxuan.nosdn.127.net/f1dbf1d9967c478ee6def81ed40734a2.png"}],"cartTotal":{"goodsCount":15,"goodsAmount":10385,"checkedGoodsCount":15,"checkedGoodsAmount":10385}}
+     * data : {"cartList":[{"id":120,"user_id":5,"session_id":"1","goods_id":1147046,"goods_sn":"1147046","product_id":226,"goods_name":"清新趣粉系列居家地毯 条纹间粉","market_price":599,"retail_price":599,"number":7,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":1,"list_pic_url":"http://yanxuan.nosdn.127.net/655d718df8107f8e7fd1dc6140e29039.png"},{"id":134,"user_id":5,"session_id":"1","goods_id":1116033,"goods_sn":"1116033","product_id":171,"goods_name":"多功能人体工学转椅","market_price":1399,"retail_price":1399,"number":1,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":1,"list_pic_url":"http://yanxuan.nosdn.127.net/f1dbf1d9967c478ee6def81ed40734a2.png"}],"cartTotal":{"goodsCount":8,"goodsAmount":5592,"checkedGoodsCount":8,"checkedGoodsAmount":5592}}
      */
 
     private int errno;
@@ -40,8 +40,8 @@ public class CartListsBean {
 
     public static class DataBean {
         /**
-         * cartList : [{"id":120,"user_id":5,"session_id":"1","goods_id":1147046,"goods_sn":"1147046","product_id":226,"goods_name":"清新趣粉系列居家地毯 条纹间粉","market_price":599,"retail_price":599,"number":7,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":1,"list_pic_url":"http://yanxuan.nosdn.127.net/655d718df8107f8e7fd1dc6140e29039.png"},{"id":122,"user_id":5,"session_id":"1","goods_id":1155000,"goods_sn":"1155000","product_id":241,"goods_name":"清新趣粉全棉四件套 条纹绿格","market_price":399,"retail_price":399,"number":5,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":1,"list_pic_url":"http://yanxuan.nosdn.127.net/d7d6ef1f1865991077384761b4521dce.png"},{"id":123,"user_id":5,"session_id":"1","goods_id":1116033,"goods_sn":"1116033","product_id":171,"goods_name":"多功能人体工学转椅","market_price":1399,"retail_price":1399,"number":3,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":1,"list_pic_url":"http://yanxuan.nosdn.127.net/f1dbf1d9967c478ee6def81ed40734a2.png"}]
-         * cartTotal : {"goodsCount":15,"goodsAmount":10385,"checkedGoodsCount":15,"checkedGoodsAmount":10385}
+         * cartList : [{"id":120,"user_id":5,"session_id":"1","goods_id":1147046,"goods_sn":"1147046","product_id":226,"goods_name":"清新趣粉系列居家地毯 条纹间粉","market_price":599,"retail_price":599,"number":7,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":1,"list_pic_url":"http://yanxuan.nosdn.127.net/655d718df8107f8e7fd1dc6140e29039.png"},{"id":134,"user_id":5,"session_id":"1","goods_id":1116033,"goods_sn":"1116033","product_id":171,"goods_name":"多功能人体工学转椅","market_price":1399,"retail_price":1399,"number":1,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":1,"list_pic_url":"http://yanxuan.nosdn.127.net/f1dbf1d9967c478ee6def81ed40734a2.png"}]
+         * cartTotal : {"goodsCount":8,"goodsAmount":5592,"checkedGoodsCount":8,"checkedGoodsAmount":5592}
          */
 
         private CartTotalBean cartTotal;
@@ -65,10 +65,10 @@ public class CartListsBean {
 
         public static class CartTotalBean {
             /**
-             * goodsCount : 15
-             * goodsAmount : 10385
-             * checkedGoodsCount : 15
-             * checkedGoodsAmount : 10385
+             * goodsCount : 8
+             * goodsAmount : 5592
+             * checkedGoodsCount : 8
+             * checkedGoodsAmount : 5592
              */
 
             private int goodsCount;
@@ -128,16 +128,6 @@ public class CartListsBean {
              */
 
             private int id;
-            private boolean isselect;
-
-            public boolean isIsselect() {
-                return isselect;
-            }
-
-            public void setIsselect(boolean isselect) {
-                this.isselect = isselect;
-            }
-
             private int user_id;
             private String session_id;
             private int goods_id;
@@ -266,3 +256,4 @@ public class CartListsBean {
         }
     }
 }
+

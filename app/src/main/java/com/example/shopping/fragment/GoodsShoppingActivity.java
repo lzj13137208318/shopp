@@ -68,6 +68,7 @@ public class GoodsShoppingActivity extends BaseActivity<GoodsShoppingConstract.V
     TextView shop_num;
     private TextView num;
     private CartBean cartBean;
+    private int id;
 
     @Override
     protected int getLayout() {
@@ -109,9 +110,10 @@ public class GoodsShoppingActivity extends BaseActivity<GoodsShoppingConstract.V
             Alpha(1.0f);
             //说明已经登录过了
             if (!token.equals("")){
-                persenter.addCartData(detailBean.getData().getInfo().getId()+"",
+                persenter.addCartData(id+"",
                         Integer.parseInt(num.getText().toString()),
-                        detailBean.getData().getGallery().get(0).getId()+"");
+                        detailBean.getData().getGallery().get(0).getId()+""
+                        );
             }else {
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivityForResult(intent,100);
@@ -187,7 +189,7 @@ public class GoodsShoppingActivity extends BaseActivity<GoodsShoppingConstract.V
 
     @Override
     protected void initData() {
-        int id = getIntent().getIntExtra("id", -1);
+        id = getIntent().getIntExtra("id", -1);
         persenter.getDetailData(id);
         persenter.getGoodsShoppingBottomListData(id);
     }
@@ -251,7 +253,7 @@ public class GoodsShoppingActivity extends BaseActivity<GoodsShoppingConstract.V
         if (cartBean.getErrno()==400){
             Toast.makeText(context, cartBean.getErrmsg(), Toast.LENGTH_SHORT).show();
         }else {
-            shop_num.setText(cartBean.getData().getCartList().size());
+            shop_num.setText(cartBean.getData().getCartList().size()+"");
         }
     }
 }

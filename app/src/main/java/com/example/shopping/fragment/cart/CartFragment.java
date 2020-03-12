@@ -10,11 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.shopping.OrderActivity;
 import com.example.shopping.R;
 import com.example.shopping.base.BaseFragment;
-import com.example.shopping.interfaces.IPersenter;
 import com.example.shopping.interfaces.cart.CartContract;
 import com.example.shopping.model.bean.CartListsBean;
-import com.example.shopping.percenter.cart.CartAdapter;
+import com.example.shopping.model.bean.CartUpdataBean;
+import com.example.shopping.model.bean.CatalogItem;
 import com.example.shopping.percenter.cart.CartPercenter;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,9 +82,17 @@ public class CartFragment extends BaseFragment<CartContract.View, CartContract.P
 
     @Override
     protected int getLayout() {
+        if (!EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().register(this);
+        }
         return R.layout.fragment_cart;
     }
-
+    //接收Eventbus
+    @Subscribe
+    public void getNum(CatalogItem catalogItem){
+        //进行网络请求
+        persenter.getCartGoodsUpdata(catalogItem.productId,catalogItem.goodsId,catalogItem.number,catalogItem.id+"");
+    }
     @Override
     protected void initView(View view) {
         cartRec.setLayoutManager(new LinearLayoutManager(context));
@@ -114,5 +125,17 @@ public class CartFragment extends BaseFragment<CartContract.View, CartContract.P
     public void cartDataReturn(CartListsBean cartListsBean) {
         List<CartListsBean.DataBean.CartListBean> cartList = cartListsBean.getData().getCartList();
         cartAdapter.addData(cartList);
+    }
+
+    //修改数据
+    @Override
+    public void cartGoodsUpdataReturn(CartUpdataBean cartUpdataBean) {
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

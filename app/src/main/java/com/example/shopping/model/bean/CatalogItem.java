@@ -9,5 +9,7 @@ public class CatalogItem implements Serializable {
     public String name;
     public String desc;
     public float price;
-
+    public String productId;
+    public String goodsId;
+    public String number;
 }
