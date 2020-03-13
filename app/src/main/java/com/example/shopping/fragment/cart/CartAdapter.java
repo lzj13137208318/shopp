@@ -64,9 +64,6 @@ public class CartAdapter extends BaseAdapter {
     protected void bindData(BaseViewHolder holder, int positon, Object o) {
         CartListsBean.DataBean.CartListBean bean = (CartListsBean.DataBean.CartListBean) mDatas.get(positon);
 
-        //默认为不选中
-        map.put(bean,false);
-
         //正常下控件
         ConstraintLayout view = (ConstraintLayout) holder.getView(R.id.item_cart_ConstraintLayout);
         ImageView img = (ImageView) holder.getView(R.id.item_cart_img);
