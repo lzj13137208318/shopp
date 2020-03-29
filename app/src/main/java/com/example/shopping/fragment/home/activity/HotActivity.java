@@ -15,7 +15,6 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.shopping.adapter.Rec_flowlayout;
 import com.example.shopping.fragment.GoodsShoppingActivity;
 import com.example.shopping.R;
 import com.example.shopping.base.BaseActivity;

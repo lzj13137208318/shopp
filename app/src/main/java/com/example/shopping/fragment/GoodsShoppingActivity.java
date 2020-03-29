@@ -105,14 +105,14 @@ public class GoodsShoppingActivity extends BaseActivity<GoodsShoppingConstract.V
     @OnClick(R.id.text_cart)
     public void onCart(){
         if (pop != null && pop.isShowing()){
-            String token = SpUtils.getInstance().getString("token");
             pop.dismiss();
             Alpha(1.0f);
+            String token = SpUtils.getInstance().getString("token1");
             //说明已经登录过了
             if (!token.equals("")){
                 persenter.addCartData(id+"",
                         Integer.parseInt(num.getText().toString()),
-                        detailBean.getData().getGallery().get(0).getId()+""
+                        1+""
                         );
             }else {
                 Intent intent = new Intent(this, LoginActivity.class);

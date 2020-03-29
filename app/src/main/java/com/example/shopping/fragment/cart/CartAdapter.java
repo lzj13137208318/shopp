@@ -1,6 +1,8 @@
 package com.example.shopping.fragment.cart;
 
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -16,41 +18,36 @@ import com.example.shopping.model.bean.CatalogItem;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class CartAdapter extends BaseAdapter {
 
     private boolean b = true;
-    private HashMap<CartListsBean.DataBean.CartListBean, Boolean> map;
     // true 说明是正常状态
     // false 说明是编辑状态
 
     public CartAdapter(List mDatas) {
         super(mDatas);
-        map = new HashMap<>();
     }
     public void selectAll(boolean b){
         this.b = b;
+        List<CartListsBean.DataBean.CartListBean> list = mDatas;
         if (b){
-            List<CartListsBean.DataBean.CartListBean> list = mDatas;
             for (int i = 0; i < list.size(); i++) {
                 list.get(i).setIsselect(true);
             }
         }else {
-            List<CartListsBean.DataBean.CartListBean> list = mDatas;
             for (int i = 0; i < list.size(); i++) {
-                map.put(list.get(i),true);
+                list.get(i).setIsselect(true);
             }
         }
-        notifyDataSetChanged();
     }
     //管理正常界面 和 编辑界面的 显示隐藏 并初始化编辑下的单选按钮为false未选中
     public void showAndHind(boolean b){
         this.b = b;
         List<CartListsBean.DataBean.CartListBean> list = mDatas;
         for (int i = 0; i < list.size(); i++) {
-            map.put(list.get(i),false);
+            list.get(i).setDelect(false);
         }
         notifyDataSetChanged();
     }
@@ -81,7 +78,7 @@ public class CartAdapter extends BaseAdapter {
         num.setText(bean.getNumber()+"");
         price.setText("￥"+bean.getNumber()*bean.getRetail_price());
 
-        RadioButton select = (RadioButton) holder.getView(R.id.item_cart_select);
+        CheckBox select = (CheckBox) holder.getView(R.id.item_cart_select);
         // true 说明是正常状态
         if (b){
             //判断正常界面是否隐藏
@@ -89,15 +86,15 @@ public class CartAdapter extends BaseAdapter {
             //隐藏 编辑界面
             viewEdit.setVisibility(View.GONE);
 
-            select.setChecked(bean.isIsselect());
             //单击标记
-            select.setOnClickListener(new View.OnClickListener() {
+            select.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
-                public void onClick(View v) {
-                    if (select.isChecked())
-                        bean.setIsselect((bean.isIsselect() == true) ? false : true);
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (buttonView.isPressed())
+                        bean.setIsselect(isChecked);
                 }
             });
+            select.setChecked(bean.isIsselect());
             //false 说明是编辑状态
         }else {
             //隐藏 正常界面，显示 编辑界面
@@ -142,14 +139,12 @@ public class CartAdapter extends BaseAdapter {
                 }
             });
 
-
-
             //单击标记
-            select.setOnClickListener(new View.OnClickListener() {
+            select.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
-                public void onClick(View v) {
-                    if (select.isChecked()) {
-                        map.put(bean,map.get(positon) ==true ? false : true);
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (buttonView.isPressed()){
+                       bean.setDelect(isChecked);
                     }
                 }
             });

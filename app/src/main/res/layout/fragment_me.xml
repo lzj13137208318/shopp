@@ -1,54 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:descendantFocusability="blocksDescendants"
     android:layout_height="match_parent">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageView
-            android:id="@+id/iv_bg"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="#000000"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <ImageView
-            android:id="@+id/iv_me_touxiang"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="20dp"
-            app:layout_constraintBottom_toBottomOf="@id/iv_bg"
-            app:layout_constraintLeft_toLeftOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_me_name"
-            android:textColor="@color/toolbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@id/iv_me_touxiang"
-            app:layout_constraintLeft_toRightOf="@id/iv_me_touxiang"
-            app:layout_constraintTop_toTopOf="@id/iv_me_touxiang"/>
-        <ImageView
-            android:id="@+id/iv_jiantou"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            app:layout_constraintBottom_toBottomOf="@id/iv_me_touxiang"
-            app:layout_constraintRight_toRightOf="@id/iv_bg"
-            app:layout_constraintTop_toTopOf="@id/iv_me_touxiang"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rec_me"
-            app:layout_constraintTop_toBottomOf="@id/iv_bg"
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|snap">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/meizi"/>
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:minHeight="60dp"
+                app:layout_collapseMode="parallax"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/back_white"/>
+
+
+                            
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#FFFFFF"
             />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <com.example.shopping.ui.Myscrollview
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:fillViewport="true">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            android:layout_height="wrap_content">
 
-</ScrollView>
+
+            <com.example.shopping.ui.MyVp
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                android:id="@+id/vp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </com.example.shopping.ui.Myscrollview>
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

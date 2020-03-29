@@ -73,7 +73,7 @@ public class HttpManager {
             Request build = chain.request().newBuilder()
                     .header("Connection","keep-alive")
                     .addHeader("Client-Type", "ANDROID")
-                    .addHeader("X-Nideshop-Token", SpUtils.getInstance().getString("token"))
+                    .addHeader("X-Nideshop-Token", SpUtils.getInstance().getString("token1"))
                     .build();
             return chain.proceed(build);
         }

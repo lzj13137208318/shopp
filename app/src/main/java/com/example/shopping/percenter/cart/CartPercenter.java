@@ -4,6 +4,7 @@ import com.example.shopping.Utils.RxUtils;
 import com.example.shopping.base.BasePersenter;
 import com.example.shopping.interfaces.cart.CartContract;
 import com.example.shopping.model.CommonSubscriber;
+import com.example.shopping.model.bean.CartDeleteBean;
 import com.example.shopping.model.bean.CartListsBean;
 import com.example.shopping.model.bean.CartUpdataBean;
 import com.example.shopping.model.http.HttpManager;
@@ -30,6 +31,19 @@ public class CartPercenter extends BasePersenter<CartContract.View> implements C
                     @Override
                     public void onNext(CartUpdataBean cartUpdataBean) {
                         mView.cartGoodsUpdataReturn(cartUpdataBean);
+                    }
+                })
+        );
+    }
+
+    @Override
+    public void getCartGoodsDeleteData(String productIds) {
+        addSubscribe(HttpManager.getShopApi().getCartGoodsDeleteData(productIds)
+                .compose(RxUtils.<CartDeleteBean>rxScheduler())
+                .subscribeWith(new CommonSubscriber<CartDeleteBean>(mView) {
+                    @Override
+                    public void onNext(CartDeleteBean result) {
+                        mView.cartGoodsDeleteDatareturn(result);
                     }
                 })
         );

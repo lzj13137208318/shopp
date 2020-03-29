@@ -58,7 +58,7 @@ public class LoginActivity extends BaseActivity<LoginConstract.View, LoginConstr
     @Override
     public void loginReturn(UserBean result) {
         //登录成功以后存入sp
-        SpUtils.getInstance().setValue("token",result.getData().getToken());
+        SpUtils.getInstance().setValue("token1",result.getData().getToken());
         finish();
     }
 

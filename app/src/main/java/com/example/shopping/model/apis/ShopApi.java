@@ -3,6 +3,7 @@ package com.example.shopping.model.apis;
 import com.example.shopping.model.bean.BannerInfo_Bean;
 import com.example.shopping.model.bean.BrandBean;
 import com.example.shopping.model.bean.CartBean;
+import com.example.shopping.model.bean.CartDeleteBean;
 import com.example.shopping.model.bean.CartListsBean;
 import com.example.shopping.model.bean.CartUpdataBean;
 import com.example.shopping.model.bean.DetailBean;
@@ -14,6 +15,7 @@ import com.example.shopping.model.bean.GoodsShoppingBottomListBean;
 import com.example.shopping.model.bean.HotBean;
 import com.example.shopping.model.bean.NewPageListBean;
 import com.example.shopping.model.bean.RegisterBean;
+import com.example.shopping.model.bean.RessBean;
 import com.example.shopping.model.bean.ShouYeBean;
 import com.example.shopping.model.bean.SortItemListBean;
 import com.example.shopping.model.bean.UserBean;
@@ -107,4 +109,12 @@ public interface ShopApi {
                                          @Field("goodsId") String goodsId,
                                          @Field("number") String number,
                                          @Field("id") String id);
+    //删除购物车数据
+    @POST("cart/delete")
+    @FormUrlEncoded
+    Flowable<CartDeleteBean> getCartGoodsDeleteData(@Field("productIds") String productIds);
+
+    //获取用户的收货地址
+    @GET("address/list")
+    Flowable<RessBean> getAddress();
 }

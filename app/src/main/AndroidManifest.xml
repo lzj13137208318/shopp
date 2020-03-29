@@ -16,7 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OrderActivity"></activity>
+        <activity android:name=".ui.ress.AddRessActivity"></activity>
+        <activity android:name=".ui.ress.RessActivity" />
+        <activity android:name=".OrderActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".fragment.GoodsShoppingActivity" />

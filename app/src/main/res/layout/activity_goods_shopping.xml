@@ -229,6 +229,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/goods_size"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 app:layout_constraintTop_toBottomOf="@id/webview"
                 android:id="@+id/rec_goodsshopping"

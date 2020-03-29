@@ -13,6 +13,7 @@ import java.util.List;
 public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.BaseViewHolder> {
 
     private OnItemClickListener onItemClickListener;
+    protected View.OnClickListener clickListener;
     protected List<T> mDatas; //列表数据
     protected Context mContext;
 
@@ -104,7 +105,10 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.Ba
         this.onItemClickListener = onItemClickListener;
     }
 
-
+    //设置接口回调监听，响应事件发生在条目中的某个组件上
+    public void setOnClickListener(View.OnClickListener listener){
+        this.clickListener = listener;
+    }
 
     /**
      * 条目点击接口
